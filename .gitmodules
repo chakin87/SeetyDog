@@ -1,0 +1,3 @@
+[submodule "SeetyDog/externlibs/spdlog"]
+	path = SeetyDog/externlibs/spdlog
+	url = https://github.com/gabime/spdlog
