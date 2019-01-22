@@ -1,3 +1,9 @@
 [submodule "SeetyDog/externlibs/spdlog"]
 	path = SeetyDog/externlibs/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "SeetyDog/externlibs/GLFW"]
+	path = SeetyDog/externlibs/GLFW
+	url = https://github.com/glfw/glfw
+[submodule "SeetyDog/externlibs/ImGui"]
+	path = SeetyDog/externlibs/ImGui
+	url = https://github.com/ocornut/imgui
