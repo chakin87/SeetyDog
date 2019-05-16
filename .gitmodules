@@ -7,3 +7,6 @@
 [submodule "SeetyDog/externlibs/ImGui"]
 	path = SeetyDog/externlibs/ImGui
 	url = https://github.com/ocornut/imgui
+[submodule "SeetyDog/externlibs/glm"]
+	path = SeetyDog/externlibs/glm
+	url = https://github.com/g-truc/glm
