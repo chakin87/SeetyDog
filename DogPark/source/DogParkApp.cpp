@@ -1,5 +1,6 @@
 #include <SeetyDog.h>
 
+#include "imgui.h"
 
 
 class ExampleLayer : public SeetyDog::Layer
@@ -17,6 +18,13 @@ public:
 			SD_INFO("Tab key was press by you (Polled Event - OnUpdate())");
 		}
 	
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(SeetyDog::Event& event) override
@@ -40,7 +48,7 @@ class DogPark : public SeetyDog::Application
 public:
 	DogPark() { 
 		PushLayer(new ExampleLayer()); 
-		PushOverlay(new SeetyDog::ImGuiLayer());
+		//PushOverlay(new SeetyDog::ImGuiLayer());
 	}
 	~DogPark() {}
 

@@ -1,12 +1,10 @@
 #include "sdpch.h"
 #include "WindowsWindow.h"
-
-
 #include "SeetyDog/Events/ApplicationEvent.h"
 #include "SeetyDog/Events/MouseEvent.h"
 #include "SeetyDog/Events/KeyEvent.h"
 
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace SeetyDog {
 

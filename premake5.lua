@@ -1,5 +1,6 @@
 workspace "SeetyDog"
 	architecture "x64"
+	startproject "DogPark"
 
 	configurations{
 		"Debug",
@@ -23,8 +24,10 @@ include "SeetyDog/externlibs/ImGui"
 
 project "SeetyDog"
 	location "SeetyDog"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-intermediate/" .. outputdir .. "/%{prj.name}")
@@ -39,7 +42,14 @@ project "SeetyDog"
 		"%{prj.name}/source/**.cpp",
 		"%{prj.name}/externlibs/glm/glm/**.hpp",
 		"%{prj.name}/externlibs/glm/glm/**.inl"
+		
 	}
+
+		defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 
 	includedirs
 	{
@@ -60,9 +70,7 @@ project "SeetyDog"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
-		systemversion "10.0.17763.0"
+		systemversion "latest"
 
 		defines
 		{
@@ -71,30 +79,28 @@ project "SeetyDog"
 			GLFW_INCLUDE_NONE
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/DogPark")
-		}
 
 	filter "configurations:Debug"
 		defines "SD_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "SD_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Ship"
 		defines "SD_SHIP"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 project "DogPark"
 	location "DogPark"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-intermediate/" .. outputdir .. "/%{prj.name}")
@@ -109,7 +115,8 @@ project "DogPark"
 	{
 		"SeetyDog/externlibs/spdlog/include",
 		"SeetyDog/source",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"SeetyDog/externlibs"
 	}
 
 	links
@@ -120,7 +127,7 @@ project "DogPark"
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0.17763.0"
+		systemversion "latest"
 
 		defines
 		{
@@ -129,15 +136,15 @@ project "DogPark"
 
 	filter "configurations:Debug"
 		defines "SD_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "SD_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Ship"
 		defines "SD_SHIP"
-		buildoptions "/MD"
-		optimize "On" 
+		runtime "Release"
+		optimize "on"

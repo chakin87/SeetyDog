@@ -28,9 +28,6 @@
     <Filter Include="source\Platform">
       <UniqueIdentifier>{8A00977C-F68B-0441-FF9C-87356BA76041}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\Platform\OpenGL">
-      <UniqueIdentifier>{7E6A90CA-6A64-B91C-53D1-4F2D3F6A1F89}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\Platform\Windows">
       <UniqueIdentifier>{C494B974-30CC-010C-39D6-652FA58C2805}</UniqueIdentifier>
     </Filter>
@@ -1137,9 +1134,6 @@
     <ClInclude Include="externlibs\glm\glm\vector_relational.hpp">
       <Filter>externlibs\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="source\Platform\OpenGL\ImGuiOpenGLRenderer.h">
-      <Filter>source\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="source\Platform\Windows\WindowsInput.h">
       <Filter>source\Platform\Windows</Filter>
     </ClInclude>
@@ -1197,11 +1191,9 @@
     <ClInclude Include="source\sdpch.h">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
-      <Filter>source\Platform\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="source\Platform\Windows\WindowsInput.cpp">
       <Filter>source\Platform\Windows</Filter>
     </ClCompile>
@@ -1210,6 +1202,9 @@
     </ClCompile>
     <ClCompile Include="source\SeetyDog\Application.cpp">
       <Filter>source\SeetyDog</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SeetyDog\ImGui\ImGuiBuild.cpp">
+      <Filter>source\SeetyDog\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="source\SeetyDog\ImGui\ImGuiLayer.cpp">
       <Filter>source\SeetyDog\ImGui</Filter>
@@ -1226,6 +1221,6 @@
     <ClCompile Include="source\sdpch.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\SeetyDog\ImGui\ImGuiBuild.cpp" />
+    <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

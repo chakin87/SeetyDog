@@ -516,7 +516,7 @@
     <ClInclude Include="externlibs\glm\glm\vec3.hpp" />
     <ClInclude Include="externlibs\glm\glm\vec4.hpp" />
     <ClInclude Include="externlibs\glm\glm\vector_relational.hpp" />
-    <ClInclude Include="source\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="source\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="source\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="source\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="source\SeetyDog.h" />
@@ -538,11 +538,11 @@
     <ClInclude Include="source\sdpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\SeetyDog\ImGui\ImGuiBuild.cpp" />
-    <ClCompile Include="source\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="source\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="source\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="source\SeetyDog\Application.cpp" />
+    <ClCompile Include="source\SeetyDog\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="source\SeetyDog\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="source\SeetyDog\Layer.cpp" />
     <ClCompile Include="source\SeetyDog\LayerStack.cpp" />

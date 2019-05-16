@@ -1,9 +1,6 @@
-#ifndef _WINDOWSWINDOW_H_
-#define _WINDOWSWINDOW_H_
-
-
+#pragma once
 #include "SeetyDog/Window.h"
-#include <glad/glad.h>
+#include "SeetyDog/Renderer/GraphicsContext.h"
 #include <GLFW/glfw3.h>
 
 namespace SeetyDog {
@@ -31,6 +28,7 @@ namespace SeetyDog {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
@@ -45,4 +43,4 @@ namespace SeetyDog {
 	};
 
 }
-#endif // !_WINDOWSWINDOW_H_
+
