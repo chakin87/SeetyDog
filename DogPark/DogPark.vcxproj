@@ -56,21 +56,21 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\bin\Debug-windows-x86_64\DogPark\</OutDir>
-    <IntDir>..\bin-intermediate\Debug-windows-x86_64\DogPark\</IntDir>
+    <IntDir>..\bin-int\Debug-windows-x86_64\DogPark\</IntDir>
     <TargetName>DogPark</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\bin\Release-windows-x86_64\DogPark\</OutDir>
-    <IntDir>..\bin-intermediate\Release-windows-x86_64\DogPark\</IntDir>
+    <IntDir>..\bin-int\Release-windows-x86_64\DogPark\</IntDir>
     <TargetName>DogPark</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\bin\Ship-windows-x86_64\DogPark\</OutDir>
-    <IntDir>..\bin-intermediate\Ship-windows-x86_64\DogPark\</IntDir>
+    <IntDir>..\bin-int\Ship-windows-x86_64\DogPark\</IntDir>
     <TargetName>DogPark</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
@@ -79,11 +79,10 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>SD_PLATFORM_WINDOWS;SD_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SeetyDog\externlibs\spdlog\include;..\SeetyDog\source;..\SeetyDog\externlibs\glm;..\SeetyDog\externlibs\ImGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SeetyDog\externlibs\spdlog\include;..\SeetyDog\source;..\SeetyDog\externlibs\glm;..\SeetyDog\externlibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -96,14 +95,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>SD_PLATFORM_WINDOWS;SD_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SeetyDog\externlibs\spdlog\include;..\SeetyDog\source;..\SeetyDog\externlibs\glm;..\SeetyDog\externlibs\ImGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SeetyDog\externlibs\spdlog\include;..\SeetyDog\source;..\SeetyDog\externlibs\glm;..\SeetyDog\externlibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -117,14 +115,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>SD_PLATFORM_WINDOWS;SD_SHIP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SeetyDog\externlibs\spdlog\include;..\SeetyDog\source;..\SeetyDog\externlibs\glm;..\SeetyDog\externlibs\ImGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SeetyDog\externlibs\spdlog\include;..\SeetyDog\source;..\SeetyDog\externlibs\glm;..\SeetyDog\externlibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>

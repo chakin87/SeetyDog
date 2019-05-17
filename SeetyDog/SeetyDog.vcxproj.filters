@@ -28,6 +28,9 @@
     <Filter Include="source\Platform">
       <UniqueIdentifier>{8A00977C-F68B-0441-FF9C-87356BA76041}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\Platform\OpenGL">
+      <UniqueIdentifier>{7E6A90CA-6A64-B91C-53D1-4F2D3F6A1F89}</UniqueIdentifier>
+    </Filter>
     <Filter Include="source\Platform\Windows">
       <UniqueIdentifier>{C494B974-30CC-010C-39D6-652FA58C2805}</UniqueIdentifier>
     </Filter>
@@ -39,6 +42,9 @@
     </Filter>
     <Filter Include="source\SeetyDog\ImGui">
       <UniqueIdentifier>{33F4F7B6-9F60-B3B1-6854-4B0FD47FD519}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\SeetyDog\Renderer">
+      <UniqueIdentifier>{0F52C32D-FB76-12AE-24C2-F73D104611CC}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1134,6 +1140,9 @@
     <ClInclude Include="externlibs\glm\glm\vector_relational.hpp">
       <Filter>externlibs\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLContext.h">
+      <Filter>source\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="source\Platform\Windows\WindowsInput.h">
       <Filter>source\Platform\Windows</Filter>
     </ClInclude>
@@ -1185,15 +1194,20 @@
     <ClInclude Include="source\SeetyDog\MouseButtonCodes.h">
       <Filter>source\SeetyDog</Filter>
     </ClInclude>
+    <ClInclude Include="source\SeetyDog\Renderer\GraphicsContext.h">
+      <Filter>source\SeetyDog\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="source\SeetyDog\Window.h">
       <Filter>source\SeetyDog</Filter>
     </ClInclude>
     <ClInclude Include="source\sdpch.h">
       <Filter>source</Filter>
     </ClInclude>
-    <ClInclude Include="source\Platform\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>source\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="source\Platform\Windows\WindowsInput.cpp">
       <Filter>source\Platform\Windows</Filter>
     </ClCompile>
@@ -1221,6 +1235,5 @@
     <ClCompile Include="source\sdpch.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

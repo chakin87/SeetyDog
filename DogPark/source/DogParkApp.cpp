@@ -1,6 +1,6 @@
 #include <SeetyDog.h>
 
-#include "imgui.h"
+#include "ImGui/imgui.h"
 
 
 class ExampleLayer : public SeetyDog::Layer

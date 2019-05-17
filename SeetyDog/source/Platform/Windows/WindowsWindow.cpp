@@ -4,7 +4,6 @@
 #include "SeetyDog/Events/MouseEvent.h"
 #include "SeetyDog/Events/KeyEvent.h"
 
-#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace SeetyDog {
 

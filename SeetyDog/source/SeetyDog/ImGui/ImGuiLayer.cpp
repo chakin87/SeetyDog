@@ -1,19 +1,18 @@
 #include "sdpch.h"
 #include "ImGuiLayer.h"
 
-
 #include "imgui.h"
-
-#include "SeetyDog/Application.h"
-
-//#include "Platform/OpenGL/ImGuiOpenGLRenderer.h"
-
+#include "imgui_internal.h"
 #include "examples/imgui_impl_glfw.h"
 #include "examples/imgui_impl_opengl3.h"
-
+#include "SeetyDog/Application.h"
 
 #include <glad/glad.h>
 #include "GLFW/glfw3.h"
+
+
+
+
 
 namespace SeetyDog {
 
@@ -73,7 +72,7 @@ namespace SeetyDog {
 		ImGui::NewFrame();
 	}
 
-	bool ImGuiLayer::End()
+	void ImGuiLayer::End()
 	{
 		ImGuiIO& io = ImGui::GetIO();
 
@@ -83,7 +82,7 @@ namespace SeetyDog {
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		if (io.ConfigFlags& ImGuiConfigFlags_ViewportsEnable)
 		{
 			GLFWwindow* backup_current_context = glfwGetCurrentContext();
 			ImGui::UpdatePlatformWindows();
@@ -93,7 +92,7 @@ namespace SeetyDog {
 	}
 
 
-	bool ImGuiLayer::OnImGuiRender()
+	void ImGuiLayer::OnImGuiRender()
 	{
 		static bool show = true;
 		ImGui::ShowDemoWindow(&show);

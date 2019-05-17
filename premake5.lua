@@ -27,10 +27,10 @@ project "SeetyDog"
 	kind "StaticLib"
 	language "C++"
 	cppdialect "C++17"
-	staticruntime "on
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-intermediate/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 
 	pchheader "sdpch.h"
@@ -103,7 +103,7 @@ project "DogPark"
 	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-intermediate/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{

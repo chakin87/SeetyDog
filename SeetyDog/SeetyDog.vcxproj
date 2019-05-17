@@ -23,19 +23,19 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
@@ -54,55 +54,49 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\bin\Debug-windows-x86_64\SeetyDog\</OutDir>
-    <IntDir>..\bin-intermediate\Debug-windows-x86_64\SeetyDog\</IntDir>
+    <IntDir>..\bin-int\Debug-windows-x86_64\SeetyDog\</IntDir>
     <TargetName>SeetyDog</TargetName>
-    <TargetExt>.dll</TargetExt>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\bin\Release-windows-x86_64\SeetyDog\</OutDir>
-    <IntDir>..\bin-intermediate\Release-windows-x86_64\SeetyDog\</IntDir>
+    <IntDir>..\bin-int\Release-windows-x86_64\SeetyDog\</IntDir>
     <TargetName>SeetyDog</TargetName>
-    <TargetExt>.dll</TargetExt>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\bin\Ship-windows-x86_64\SeetyDog\</OutDir>
-    <IntDir>..\bin-intermediate\Ship-windows-x86_64\SeetyDog\</IntDir>
+    <IntDir>..\bin-int\Ship-windows-x86_64\SeetyDog\</IntDir>
     <TargetName>SeetyDog</TargetName>
-    <TargetExt>.dll</TargetExt>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>sdpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SD_PLATFORM_WINDOWS;SD_BUILD_DLL;SD_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SD_PLATFORM_WINDOWS;SD_BUILD_DLL;SD_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>source;externlibs\spdlog\include;externlibs\GLFW\include;externlibs\GLAD\include;externlibs\ImGui;externlibs\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ImportLibrary>..\bin\Debug-windows-x86_64\SeetyDog\SeetyDog.lib</ImportLibrary>
     </Link>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\SeetyDog\SeetyDog.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\SeetyDog\SeetyDog.dll ..\bin\Debug-windows-x86_64\DogPark &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\SeetyDog\SeetyDog.dll ..\bin\Debug-windows-x86_64\DogPark &gt; nul)</Command>
-    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>sdpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SD_PLATFORM_WINDOWS;SD_BUILD_DLL;SD_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SD_PLATFORM_WINDOWS;SD_BUILD_DLL;SD_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>source;externlibs\spdlog\include;externlibs\GLFW\include;externlibs\GLAD\include;externlibs\ImGui;externlibs\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -110,26 +104,23 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ImportLibrary>..\bin\Release-windows-x86_64\SeetyDog\SeetyDog.lib</ImportLibrary>
     </Link>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\SeetyDog\SeetyDog.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\SeetyDog\SeetyDog.dll ..\bin\Release-windows-x86_64\DogPark &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\SeetyDog\SeetyDog.dll ..\bin\Release-windows-x86_64\DogPark &gt; nul)</Command>
-    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>sdpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SD_PLATFORM_WINDOWS;SD_BUILD_DLL;SD_SHIP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SD_PLATFORM_WINDOWS;SD_BUILD_DLL;SD_SHIP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>source;externlibs\spdlog\include;externlibs\GLFW\include;externlibs\GLAD\include;externlibs\ImGui;externlibs\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -137,19 +128,16 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ImportLibrary>..\bin\Ship-windows-x86_64\SeetyDog\SeetyDog.lib</ImportLibrary>
     </Link>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Ship-windows-x86_64\SeetyDog\SeetyDog.dll\ (xcopy /Q /E /Y /I ..\bin\Ship-windows-x86_64\SeetyDog\SeetyDog.dll ..\bin\Ship-windows-x86_64\DogPark &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Ship-windows-x86_64\SeetyDog\SeetyDog.dll ..\bin\Ship-windows-x86_64\DogPark &gt; nul)</Command>
-    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="externlibs\glm\glm\common.hpp" />
@@ -534,6 +522,7 @@
     <ClInclude Include="source\SeetyDog\LayerStack.h" />
     <ClInclude Include="source\SeetyDog\Logger.h" />
     <ClInclude Include="source\SeetyDog\MouseButtonCodes.h" />
+    <ClInclude Include="source\SeetyDog\Renderer\GraphicsContext.h" />
     <ClInclude Include="source\SeetyDog\Window.h" />
     <ClInclude Include="source\sdpch.h" />
   </ItemGroup>

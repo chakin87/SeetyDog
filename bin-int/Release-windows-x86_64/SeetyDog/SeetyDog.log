@@ -1,0 +1,13 @@
+﻿  sdpch.cpp
+  OpenGLContext.cpp
+  WindowsInput.cpp
+  WindowsWindow.cpp
+  Application.cpp
+  ImGuiBuild.cpp
+  ImGuiLayer.cpp
+c:\cpp\seetydog\seetydog\source\seetydog\imgui\imguilayer.cpp(80): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+  Layer.cpp
+  LayerStack.cpp
+  Logger.cpp
+  Generating Code...
+  SeetyDog.vcxproj -> C:\CPP\SeetyDog\SeetyDog\..\bin\Release-windows-x86_64\SeetyDog\SeetyDog.lib
