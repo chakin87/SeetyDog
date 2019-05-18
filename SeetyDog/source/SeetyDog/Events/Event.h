@@ -35,7 +35,8 @@ namespace SeetyDog {
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; }\
 								virtual EventType GetEventType() const override { return GetStaticType(); }\
 								virtual const char* GetName() const override { return #type; }
-
+	//The operator #, followed by a parameter name, is replaced by a string literal that contains the argument passed (as if enclosed between double quotes)
+	//The operator ## concatenates two arguments, in quotes, leaving no blank spaces between them
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
 	class SEETYDOG_API Event

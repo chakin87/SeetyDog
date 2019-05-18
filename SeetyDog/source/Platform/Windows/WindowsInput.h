@@ -4,7 +4,7 @@
 
 namespace SeetyDog {
 
-	class WindowsInput : public Input
+	class SEETYDOG_API WindowsInput : public Input
 	{
 	public:
 		WindowsInput();

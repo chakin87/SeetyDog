@@ -11,7 +11,7 @@ struct GLFWwindow;
 
 namespace SeetyDog {
 
-	class OpenGLContext : public GraphicsContext
+	class SEETYDOG_API OpenGLContext : public GraphicsContext
 	{
 	public:
 		OpenGLContext(GLFWwindow* windowHandle);

@@ -1203,6 +1203,7 @@
     <ClInclude Include="source\sdpch.h">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLTriangleLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp">
@@ -1235,5 +1236,6 @@
     <ClCompile Include="source\sdpch.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLTriangleLayer.cpp" />
   </ItemGroup>
 </Project>

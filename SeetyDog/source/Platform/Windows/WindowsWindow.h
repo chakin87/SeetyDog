@@ -7,7 +7,7 @@
 namespace SeetyDog {
 
 
-	class WindowsWindow : public Window
+	class SEETYDOG_API WindowsWindow : public Window
 	{
 	public:
 		WindowsWindow(const WindowProps& props);

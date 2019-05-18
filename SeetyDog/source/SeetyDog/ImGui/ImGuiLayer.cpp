@@ -17,7 +17,7 @@
 namespace SeetyDog {
 
 	ImGuiLayer::ImGuiLayer()
-		: Layer("ImGuiLayer")
+		: Layer("Main Menu")
 	{
 	}
 
@@ -90,7 +90,6 @@ namespace SeetyDog {
 			glfwMakeContextCurrent(backup_current_context);
 		}
 	}
-
 
 	void ImGuiLayer::OnImGuiRender()
 	{
