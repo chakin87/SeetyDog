@@ -1,6 +1,7 @@
 #pragma once
 #include "SeetyDog/Layer.h"
 
+
 namespace SeetyDog {
 
 	class SEETYDOG_API OpenGLTriangleLayer : public Layer
@@ -16,6 +17,10 @@ namespace SeetyDog {
 		virtual void OnEvent(Event& event) override;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+	private:
+	
+		float m_Vertices[9];
+		float m_Speed;
 	};
 	
 }
