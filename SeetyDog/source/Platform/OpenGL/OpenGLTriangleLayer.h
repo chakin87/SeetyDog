@@ -15,10 +15,20 @@ namespace SeetyDog {
 		virtual void OnUpdate() override;
 		virtual void OnImGuiRender() override;
 		virtual void OnEvent(Event& event) override;
-
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
-	private:
+		
 	
+	public://Members
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+
+	private://Methods
+		void InitOnAttach();
+		void TriOneUpdate();
+	
+		void DrawCircleInit();
+		void DrawCircle(float x, float y, float z, float radius, int numberOfSides);
+
+
+	private://Members
 		float m_Vertices[9];
 		float m_Speed;
 	};
