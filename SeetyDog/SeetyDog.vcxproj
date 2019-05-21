@@ -504,6 +504,7 @@
     <ClInclude Include="externlibs\glm\glm\vec3.hpp" />
     <ClInclude Include="externlibs\glm\glm\vec4.hpp" />
     <ClInclude Include="externlibs\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="externlibs\stb_image\stb_image.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLTriangleLayer.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="source\Platform\Windows\WindowsInput.h" />
@@ -528,6 +529,7 @@
     <ClInclude Include="source\sdpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="externlibs\stb_image\stb_image.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLTriangleLayer.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="source\Platform\Windows\WindowsInput.cpp" />
@@ -552,6 +554,9 @@
     <ProjectReference Include="externlibs\ImGui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Documents\UserModifications.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,8 @@
 #include <SeetyDog.h>
 
 #include "ImGui/imgui.h"
-#include "Platform/OpenGL/OpenGLTriangleLayer.h"
+//#include "Platform/OpenGL/OpenGLTriangleLayer.h"
+#include "Breakout/BreakoutLayer.h"
 
 
 class ExampleLayer : public SeetyDog::Layer
@@ -32,10 +33,10 @@ public:
 
 	virtual void OnImGuiRender() override
 	{
-		ImGui::Begin("Test");
-		//./ImGuiIO& io = ImGui::GetIO();
-		//./io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-		//./io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+		//ImGui::Begin("Test");
+		ImGuiIO& io = ImGui::GetIO();
+		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 		ImGui::Text("ERROR: Docking is not enabled! See Demo > Configuration.");
 		ImGui::Text("Set io.ConfigFlags |= ImGuiConfigFlags_DockingEnable in your code, or ");
 		ImGui::SameLine(0.0f, 0.0f);
@@ -43,7 +44,7 @@ public:
 			ImGui::Text("Lol you clicked the button!");
 
 		ImGui::Text("Hello World");
-		ImGui::End();
+		//ImGui::End();
 	}
 
 	void OnEvent(SeetyDog::Event& event) override
@@ -66,8 +67,9 @@ class DogPark : public SeetyDog::Application
 {
 public:
 	DogPark() { 
-		PushLayer(new ExampleLayer()); 
-		PushLayer(new SeetyDog::OpenGLTriangleLayer());
+	//./	PushLayer(new ExampleLayer()); 
+		//./PushLayer(new SeetyDog::OpenGLTriangleLayer());
+		PushLayer(new BreakoutLayer());
 	}
 	~DogPark() {}
 

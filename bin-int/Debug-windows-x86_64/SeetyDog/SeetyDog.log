@@ -1,8 +1,2 @@
-﻿  OpenGLTriangleLayer.cpp
-c:\cpp\seetydog\seetydog\source\platform\opengl\opengltrianglelayer.cpp(41): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
-c:\cpp\seetydog\seetydog\source\platform\opengl\opengltrianglelayer.cpp(41): warning C4154: deletion of an array expression; conversion to pointer supplied
-c:\cpp\seetydog\seetydog\source\platform\opengl\opengltrianglelayer.cpp(138): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-c:\cpp\seetydog\seetydog\source\platform\opengl\opengltrianglelayer.cpp(150): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-  Application.cpp
-  Generating Code...
+﻿  OpenGLContext.cpp
   SeetyDog.vcxproj -> C:\CPP\SeetyDog\SeetyDog\..\bin\Debug-windows-x86_64\SeetyDog\SeetyDog.lib

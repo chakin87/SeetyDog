@@ -131,12 +131,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Breakout\BreakoutLayer.cpp" />
+    <ClCompile Include="source\Breakout\ResourceManager.cpp" />
+    <ClCompile Include="source\Breakout\Shader.cpp" />
+    <ClCompile Include="source\Breakout\Game.cpp" />
     <ClCompile Include="source\DogParkApp.cpp" />
+    <ClCompile Include="source\Breakout\Texture2D.cpp" />
+    <ClCompile Include="source\Breakout\SpriteRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SeetyDog\SeetyDog.vcxproj">
       <Project>{E9F2D467-D5BF-2F73-FED8-1D1BEA046501}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\Breakout\BreakoutLayer.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="source\Breakout\ResourceManager.h" />
+    <ClInclude Include="source\Breakout\Shader.h" />
+    <ClInclude Include="source\Breakout\Game.h" />
+    <ClInclude Include="source\Breakout\Texture2D.h" />
+    <ClInclude Include="source\Breakout\SpriteRenderer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DogPark.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\Breakout\Resources\Shaders\basic.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

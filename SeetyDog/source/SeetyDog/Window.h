@@ -14,8 +14,8 @@ namespace SeetyDog {
 		unsigned int Height;
 
 		WindowProps(const std::string& title = "SeetyDog - Bytes that Build!",
-			unsigned int width = 1280,
-			unsigned int height = 720)
+			unsigned int width = 1200,
+			unsigned int height = 800)
 			: Title(title), Width(width), Height(height)
 		{
 		}
