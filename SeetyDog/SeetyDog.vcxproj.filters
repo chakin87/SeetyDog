@@ -4,6 +4,18 @@
     <Filter Include="externlibs">
       <UniqueIdentifier>{A52BACE6-91E3-ED33-FAEA-C68FE6C18824}</UniqueIdentifier>
     </Filter>
+    <Filter Include="externlibs\FreeType">
+      <UniqueIdentifier>{B8EB90C0-244D-6ECE-ADBA-B480191BA58D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externlibs\FreeType\include">
+      <UniqueIdentifier>{2B4B4A40-9758-7826-203F-74118C4B44DD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externlibs\FreeType\include\freetype">
+      <UniqueIdentifier>{3E0A56B9-2AF1-17B1-D341-7ECEBF079117}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externlibs\FreeType\include\freetype\config">
+      <UniqueIdentifier>{A3E7CEF7-0F4D-627E-9825-0457048A57ED}</UniqueIdentifier>
+    </Filter>
     <Filter Include="externlibs\glm">
       <UniqueIdentifier>{74008F72-60CE-8278-4962-F39E35CF5EDD}</UniqueIdentifier>
     </Filter>
@@ -21,6 +33,30 @@
     </Filter>
     <Filter Include="externlibs\glm\glm\gtx">
       <UniqueIdentifier>{A5D973B6-91D3-9C08-7A40-331966D90275}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externlibs\irrKlang">
+      <UniqueIdentifier>{4E5C1A2A-BABD-F737-432B-3EEAAF8B2EF7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externlibs\irrKlang\examples">
+      <UniqueIdentifier>{BC6110C7-A81C-0073-51D4-78BD3D6E4A03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externlibs\irrKlang\examples\common">
+      <UniqueIdentifier>{94B707B8-0071-7262-89D0-8C3CF58828D2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externlibs\irrKlang\include">
+      <UniqueIdentifier>{C1F12DD5-2DFF-5BBB-B6E5-57A622F22772}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externlibs\irrKlang\plugins">
+      <UniqueIdentifier>{3F139EEC-AB20-CCD2-3407-C8BDA0139889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externlibs\irrKlang\plugins\ikpMP3">
+      <UniqueIdentifier>{42E28BF4-2E1E-8F5E-9730-A755838B3779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externlibs\irrKlang\plugins\ikpMP3\decoder">
+      <UniqueIdentifier>{47EB0F98-3353-D665-9CBE-EA7B8845ED51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externlibs\stb_image">
+      <UniqueIdentifier>{7F6E9931-6BFD-22FB-141C-37F6008A33A1}</UniqueIdentifier>
     </Filter>
     <Filter Include="source">
       <UniqueIdentifier>{76FF3A1C-62A1-65F2-4B5C-7946379DEC42}</UniqueIdentifier>
@@ -48,6 +84,156 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="externlibs\FreeType\include\freetype\config\ftconfig.h">
+      <Filter>externlibs\FreeType\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\config\ftheader.h">
+      <Filter>externlibs\FreeType\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\config\ftmodule.h">
+      <Filter>externlibs\FreeType\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\config\ftoption.h">
+      <Filter>externlibs\FreeType\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\config\ftstdlib.h">
+      <Filter>externlibs\FreeType\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\freetype.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftadvanc.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftbbox.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftbdf.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftbitmap.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftbzip2.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftcache.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftchapters.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftcid.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftcolor.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftdriver.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\fterrdef.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\fterrors.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftfntfmt.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftgasp.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftglyph.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftgxval.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftgzip.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftimage.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftincrem.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftlcdfil.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftlist.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftlzw.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftmac.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftmm.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftmodapi.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftmoderr.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftotval.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftoutln.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftparams.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftpfr.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftrender.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftsizes.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftsnames.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftstroke.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftsynth.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftsystem.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\fttrigon.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\fttypes.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ftwinfnt.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\t1tables.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\ttnameid.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\tttables.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\freetype\tttags.h">
+      <Filter>externlibs\FreeType\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\FreeType\include\ft2build.h">
+      <Filter>externlibs\FreeType\include</Filter>
+    </ClInclude>
     <ClInclude Include="externlibs\glm\glm\common.hpp">
       <Filter>externlibs\glm\glm</Filter>
     </ClInclude>
@@ -1140,7 +1326,97 @@
     <ClInclude Include="externlibs\glm\glm\vector_relational.hpp">
       <Filter>externlibs\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\examples\common\conio.h">
+      <Filter>externlibs\irrKlang\examples\common</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_ESoundEngineOptions.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_ESoundOutputDrivers.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_EStreamModes.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_IAudioRecorder.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_IAudioStream.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_IAudioStreamLoader.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_IFileFactory.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_IFileReader.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_IRefCounted.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_ISound.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_ISoundDeviceList.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_ISoundEffectControl.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_ISoundEngine.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_ISoundMixedOutputReceiver.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_ISoundSource.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_ISoundStopEventReceiver.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_IVirtualRefCounted.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_SAudioStreamFormat.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_irrKlangTypes.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\ik_vec3d.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\include\irrKlang.h">
+      <Filter>externlibs\irrKlang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\plugins\ikpMP3\CIrrKlangAudioStreamLoaderMP3.h">
+      <Filter>externlibs\irrKlang\plugins\ikpMP3</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\plugins\ikpMP3\CIrrKlangAudioStreamMP3.h">
+      <Filter>externlibs\irrKlang\plugins\ikpMP3</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\plugins\ikpMP3\decoder\internal.h">
+      <Filter>externlibs\irrKlang\plugins\ikpMP3\decoder</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\plugins\ikpMP3\decoder\mpaudec.h">
+      <Filter>externlibs\irrKlang\plugins\ikpMP3\decoder</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\plugins\ikpMP3\decoder\mpaudectab.h">
+      <Filter>externlibs\irrKlang\plugins\ikpMP3\decoder</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\irrKlang\plugins\ikpMP3\decoder\mpegaudio.h">
+      <Filter>externlibs\irrKlang\plugins\ikpMP3\decoder</Filter>
+    </ClInclude>
+    <ClInclude Include="externlibs\stb_image\stb_image.h">
+      <Filter>externlibs\stb_image</Filter>
+    </ClInclude>
     <ClInclude Include="source\Platform\OpenGL\OpenGLContext.h">
+      <Filter>source\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLTriangleLayer.h">
       <Filter>source\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="source\Platform\Windows\WindowsInput.h">
@@ -1203,11 +1479,15 @@
     <ClInclude Include="source\sdpch.h">
       <Filter>source</Filter>
     </ClInclude>
-    <ClInclude Include="source\Platform\OpenGL\OpenGLTriangleLayer.h" />
-    <ClInclude Include="externlibs\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="externlibs\stb_image\stb_image.cpp">
+      <Filter>externlibs\stb_image</Filter>
+    </ClCompile>
     <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>source\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLTriangleLayer.cpp">
       <Filter>source\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="source\Platform\Windows\WindowsInput.cpp">
@@ -1237,10 +1517,5 @@
     <ClCompile Include="source\sdpch.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\Platform\OpenGL\OpenGLTriangleLayer.cpp" />
-    <ClCompile Include="externlibs\stb_image\stb_image.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Documents\UserModifications.txt" />
   </ItemGroup>
 </Project>

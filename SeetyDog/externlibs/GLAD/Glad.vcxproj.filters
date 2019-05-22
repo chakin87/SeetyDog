@@ -15,10 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\KHR\khrplatform.h">
+      <Filter>include\KHR</Filter>
+    </ClInclude>
     <ClInclude Include="include\glad\glad.h">
       <Filter>include\glad</Filter>
     </ClInclude>
-    <ClInclude Include="include\glad\khrplatform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\glad.c">

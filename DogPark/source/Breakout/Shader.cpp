@@ -8,7 +8,7 @@
 Shader::Shader(const std::string & filepath)
 {
 	// TODO: Fix this hard coded filePath
-	ShaderProgramSource source = ParseShader("C:/CPP/SeetyDog/DogPark/source/Breakout/Resources/Shaders/basic.shader");
+	ShaderProgramSource source = ParseShader(filepath);
 	this->Compile(source.VertexSource, source.FragmentSource);
 	//this->GetShader();
 }
@@ -122,6 +122,8 @@ void Shader::SetMatrix4(const char * name, const glm::mat4 & matrix, bool useSha
 
 ShaderProgramSource Shader::ParseShader(const std::string & filePath)
 {
+
+	SD_TRACE("[FILEPATH]");
 	SD_TRACE(filePath);
 	std::ifstream stream(filePath);
 	// TODO: error handeling for file open

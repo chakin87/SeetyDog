@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>SD_PLATFORM_WINDOWS;SD_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SeetyDog\externlibs\spdlog\include;..\SeetyDog\source;..\SeetyDog\externlibs\glm;..\SeetyDog\externlibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SeetyDog\externlibs\spdlog\include;..\SeetyDog\source;..\SeetyDog\externlibs\glm;..\SeetyDog\externlibs;..\SeetyDog\externlibs\FreeType\include\freetype;..\SeetyDog\externlibs\FreeType\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -95,7 +95,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>SD_PLATFORM_WINDOWS;SD_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SeetyDog\externlibs\spdlog\include;..\SeetyDog\source;..\SeetyDog\externlibs\glm;..\SeetyDog\externlibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SeetyDog\externlibs\spdlog\include;..\SeetyDog\source;..\SeetyDog\externlibs\glm;..\SeetyDog\externlibs;..\SeetyDog\externlibs\FreeType\include\freetype;..\SeetyDog\externlibs\FreeType\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -115,7 +115,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>SD_PLATFORM_WINDOWS;SD_SHIP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SeetyDog\externlibs\spdlog\include;..\SeetyDog\source;..\SeetyDog\externlibs\glm;..\SeetyDog\externlibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SeetyDog\externlibs\spdlog\include;..\SeetyDog\source;..\SeetyDog\externlibs\glm;..\SeetyDog\externlibs;..\SeetyDog\externlibs\FreeType\include\freetype;..\SeetyDog\externlibs\FreeType\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -131,33 +131,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="source\Breakout\BallObject.h" />
+    <ClInclude Include="source\Breakout\BreakoutLayer.h" />
+    <ClInclude Include="source\Breakout\Game.h" />
+    <ClInclude Include="source\Breakout\GameLevel.h" />
+    <ClInclude Include="source\Breakout\GameObject.h" />
+    <ClInclude Include="source\Breakout\ParticleGenerator.h" />
+    <ClInclude Include="source\Breakout\PostProcessor.h" />
+    <ClInclude Include="source\Breakout\PowerUp.h" />
+    <ClInclude Include="source\Breakout\ResourceManager.h" />
+    <ClInclude Include="source\Breakout\Shader.h" />
+    <ClInclude Include="source\Breakout\SpriteRenderer.h" />
+    <ClInclude Include="source\Breakout\TextRenderer.h" />
+    <ClInclude Include="source\Breakout\Texture2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\Breakout\BallObject.cpp" />
     <ClCompile Include="source\Breakout\BreakoutLayer.cpp" />
+    <ClCompile Include="source\Breakout\Game.cpp" />
+    <ClCompile Include="source\Breakout\GameLevel.cpp" />
+    <ClCompile Include="source\Breakout\GameObject.cpp" />
+    <ClCompile Include="source\Breakout\ParticleGenerator.cpp" />
+    <ClCompile Include="source\Breakout\PostProcessor.cpp" />
     <ClCompile Include="source\Breakout\ResourceManager.cpp" />
     <ClCompile Include="source\Breakout\Shader.cpp" />
-    <ClCompile Include="source\Breakout\Game.cpp" />
-    <ClCompile Include="source\DogParkApp.cpp" />
-    <ClCompile Include="source\Breakout\Texture2D.cpp" />
     <ClCompile Include="source\Breakout\SpriteRenderer.cpp" />
+    <ClCompile Include="source\Breakout\TextRenderer.cpp" />
+    <ClCompile Include="source\Breakout\Texture2D.cpp" />
+    <ClCompile Include="source\DogParkApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SeetyDog\SeetyDog.vcxproj">
       <Project>{E9F2D467-D5BF-2F73-FED8-1D1BEA046501}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="source\Breakout\BreakoutLayer.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="source\Breakout\ResourceManager.h" />
-    <ClInclude Include="source\Breakout\Shader.h" />
-    <ClInclude Include="source\Breakout\Game.h" />
-    <ClInclude Include="source\Breakout\Texture2D.h" />
-    <ClInclude Include="source\Breakout\SpriteRenderer.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="DogPark.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="source\Breakout\Resources\Shaders\basic.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

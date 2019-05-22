@@ -120,14 +120,12 @@ Texture2D ResourceManager::loadTextureFromFile(const GLchar *file, GLboolean alp
 	}
 	// Load image
 	int width, height;
-	stbi_set_flip_vertically_on_load(1);
-	unsigned char* image = stbi_load(file, &width, &height, 0, 4/*texture.Image_Format == GL_RGBA ? SOIL_LOAD_RGBA : SOIL_LOAD_RGB*/);
+	//stbi_set_flip_vertically_on_load(1);
+	unsigned char* image = stbi_load(file, &width, &height, 0, texture.Image_Format == GL_RGBA ? SOIL_LOAD_RGBA : SOIL_LOAD_RGB);
 	
 	if (image) {
 		SD_TRACE("image load success");
-		//glGenerateMipmap(GL_TEXTURE_2D);
-		//./SD_TRACE(image);
-		//./SD_TRACE(*image);
+
 	}
 	else {
 		SD_TRACE("image load NON-success");

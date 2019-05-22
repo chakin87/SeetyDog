@@ -16,6 +16,9 @@ IncludeDir["GLFW"] = "SeetyDog/externlibs/GLFW/include"
 IncludeDir["GLAD"] = "SeetyDog/externlibs/GLAD/include"
 IncludeDir["ImGui"] = "SeetyDog/externlibs/ImGui"
 IncludeDir["glm"] = "SeetyDog/externlibs/glm"
+IncludeDir["irrKlang"] = "SeetyDog/externlibs/irrKlang"
+IncludeDir["stb_image"] = "SeetyDog/externlibs/stb_image"
+IncludeDir["FreeType"] = "SeetyDog/externlibs/FreeType/include"
 
 include "SeetyDog/externlibs/GLFW"
 include "SeetyDog/externlibs/GLAD"
@@ -41,8 +44,12 @@ project "SeetyDog"
 		"%{prj.name}/source/**.h",
 		"%{prj.name}/source/**.cpp",
 		"%{prj.name}/externlibs/glm/glm/**.hpp",
-		"%{prj.name}/externlibs/glm/glm/**.inl"
-		
+		"%{prj.name}/externlibs/glm/glm/**.inl",
+		"%{prj.name}/externlibs/irrKlang/**.h",
+		"%{prj.name}/externlibs/stb_image/**.h",
+		"%{prj.name}/externlibs/stb_image/**.cpp",
+		"%{prj.name}/externlibs/FreeType/**.h",
+		"%{prj.name}/externlibs/FreeType/**.cpp"
 	}
 
 		defines
@@ -55,6 +62,9 @@ project "SeetyDog"
 	{
 		"%{prj.name}/source",
 		"%{prj.name}/externlibs/spdlog/include",
+		"%{prj.name}/externlibs/irrKlang/include",
+		"%{prj.name}/externlibs/FreeType/include",
+		"%{prj.name}/externlibs/FreeType/include/freetype",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.GLAD}",
 		"%{IncludeDir.ImGui}",
@@ -66,6 +76,8 @@ project "SeetyDog"
 		"GLFW",
 		"GLAD",
 		"ImGui",
+		"C:/CPP/SeetyDog/SeetyDog/externlibs/irrKlang/lib/Winx64-visualStudio/irrKlang.lib",
+		"C:/CPP/SeetyDog/SeetyDog/externlibs/FreeType/win64/freetype.lib",
 		"opengl32.lib"
 	}
 
@@ -116,7 +128,9 @@ project "DogPark"
 		"SeetyDog/externlibs/spdlog/include",
 		"SeetyDog/source",
 		"%{IncludeDir.glm}",
-		"SeetyDog/externlibs"
+		"SeetyDog/externlibs",
+		"SeetyDog/externlibs/FreeType/include/freetype",
+		"SeetyDog/externlibs/FreeType/include"
 	}
 
 	links
