@@ -32,7 +32,7 @@ TextRenderer      *Text;
 
 Game::Game(unsigned int width, unsigned int height)
 	:m_State(GAME_ACTIVE), m_Keys(), m_Width(width), m_Height(height), ShakeTime(0.0f),
-	Level(0), Lives(3)
+	Level(0), Lives(100)
 {
 }
 
@@ -173,10 +173,36 @@ void Game::ProcesInput(float dt)
 			}
 		}
 		// For Debugging Use Only! :P
-		if (SeetyDog::Input::IsKeyPressed(SD_KEY_LEFT_SHIFT) && SeetyDog::Input::IsKeyPressed(SD_KEY_C)) {
-				Player->Position.x = (Ball->Position.x + (Ball->Size.x/2)) - (Player->Size.x /2);
+		if (SeetyDog::Input::IsKeyPressed(SD_KEY_LEFT_SHIFT)) {
+			if (SeetyDog::Input::IsKeyPressed(SD_KEY_C)) {
+				Player->Position.x = (Ball->Position.x + (Ball->Size.x / 2)) - (Player->Size.x / 2);
+				SoundEngine->play2D("source/Breakout/Resources/Sounds/lesser_vibes_HTIS_Beeps_Synth_01_004.mp3");
+			}
+			if (SeetyDog::Input::IsKeyPressed(SD_KEY_V)) {
+				Ball->PassThrough = true;
+				Ball->Color = glm::vec3(1.0f, 0.5f, 0.5f);
+				SoundEngine->play2D("source/Breakout/Resources/Sounds/lesser_vibes_HTIS_Beeps_Synth_01_004.mp3");
+			}
+			if (SeetyDog::Input::IsKeyPressed(SD_KEY_F)) {
+				Player->Size.x += 5;
+				SoundEngine->play2D("source/Breakout/Resources/Sounds/lesser_vibes_HTIS_Beeps_Synth_01_004.mp3");
+			}
 		}
-
+		if (SeetyDog::Input::IsKeyPressed(SD_KEY_LEFT_CONTROL)) {
+			if (SeetyDog::Input::IsKeyPressed(SD_KEY_C)) {
+				Player->Position.x = (Ball->Position.x + (Ball->Size.x / 2)) - (Player->Size.x / 2);
+				SoundEngine->play2D("source/Breakout/Resources/Sounds/lesser_vibes_HTIS_Beeps_Synth_01_004.mp3");
+			}
+			if (SeetyDog::Input::IsKeyPressed(SD_KEY_V)) {
+				Ball->PassThrough = false;
+				Ball->Color = glm::vec3(1.0f);
+				SoundEngine->play2D("source/Breakout/Resources/Sounds/lesser_vibes_HTIS_Beeps_Synth_01_004.mp3");
+			}
+			if (SeetyDog::Input::IsKeyPressed(SD_KEY_F)) {
+				Player->Size.x -= 5;
+				SoundEngine->play2D("source/Breakout/Resources/Sounds/lesser_vibes_HTIS_Beeps_Synth_01_004.mp3");
+			}
+		}
 	}
 }
 
