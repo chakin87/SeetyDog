@@ -51,11 +51,21 @@ void Game::Init()
 {
 	// Load shaders
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/basic.shader", (std::string)"sprite");
+	//.//.//Testing "A simple 2D transformation by rotation." //.//.//
+	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/ball.shader", (std::string)"ballsprite");
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/particle.shader", (std::string)"particle");
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/postprocessing.shader", (std::string)"postprocessing");
 	// Configure shaders
 	//glm::mat4 projection = glm::mat4(1.0f);
 	glm::mat4        projection = glm::ortho(0.0f, static_cast<GLfloat>(this->m_Width), static_cast<GLfloat>(this->m_Height), 0.0f, -1.0f, 1.0f);
+
+	//.//.//Testing "A simple 2D transformation by rotation."//.//.//
+	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::rotate(trans, glm::radians(180.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	ResourceManager::GetShader("ballsprite").Use().SetInteger("sprite", 0);
+	ResourceManager::GetShader("ballsprite").Use().SetMatrix4("trans", trans, true);
+	
+
 	ResourceManager::GetShader("sprite").Use().SetInteger("sprite", 0);
 	ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
 	ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);

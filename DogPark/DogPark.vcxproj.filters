@@ -85,4 +85,7 @@
     </ClCompile>
     <ClCompile Include="source\DogParkApp.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="source\Breakout\Resources\Shaders\ball.shader" />
+  </ItemGroup>
 </Project>
