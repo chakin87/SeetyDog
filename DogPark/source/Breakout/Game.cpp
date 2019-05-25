@@ -60,10 +60,10 @@ void Game::Init()
 	glm::mat4        projection = glm::ortho(0.0f, static_cast<GLfloat>(this->m_Width), static_cast<GLfloat>(this->m_Height), 0.0f, -1.0f, 1.0f);
 
 	//.//.//Testing "A simple 2D transformation by rotation."//.//.//
-	glm::mat4 trans = glm::mat4(1.0f);
-	trans = glm::rotate(trans, glm::radians(180.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	ResourceManager::GetShader("ballsprite").Use().SetInteger("sprite", 0);
-	ResourceManager::GetShader("ballsprite").Use().SetMatrix4("trans", trans, true);
+	///.///glm::mat4 trans = glm::mat4(1.0f);
+	///.///trans = glm::rotate(trans, glm::radians(180.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	///.///ResourceManager::GetShader("ballsprite").Use().SetInteger("sprite", 0);
+	///.///ResourceManager::GetShader("ballsprite").Use().SetMatrix4("trans", trans, true);
 	
 
 	ResourceManager::GetShader("sprite").Use().SetInteger("sprite", 0);
@@ -104,7 +104,18 @@ void Game::Init()
 	Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
 
 	glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
+
+	//.//.//Testing "A simple 2D transformation by rotation."//.//.//		v
 	Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
+	//Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"), ResourceManager::GetShader("ballsprite"));
+	
+
+
+
+
+	//.//.//Testing "A simple 2D transformation by rotation."//.//.//		^
+
+
 	// Audio
 	SoundEngine->play2D("source/Breakout/Resources/Sounds/breakout.mp3", GL_TRUE);
 }
@@ -220,6 +231,11 @@ void Game::Update(float dt)
 {
 	// Update objects
 	Ball->Move(dt, this->m_Width);
+
+//.//.//Testing "A simple 2D transformation by rotation."//.//.//		v
+	Ball->Update(dt);
+//.//.//Testing "A simple 2D transformation by rotation."//.//.//		^
+
 	// Check for collisions
 	this->DoCollisions();
 	// Update particles

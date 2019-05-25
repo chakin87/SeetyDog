@@ -7,6 +7,14 @@ BallObject::BallObject()
 BallObject::BallObject(glm::vec2 pos, GLfloat radius, glm::vec2 velocity, Texture2D sprite)
 	: GameObject(pos, glm::vec2(radius * 2, radius * 2), sprite, glm::vec3(1.0f), velocity),
 	Radius(radius), Stuck(true), Sticky(GL_FALSE), PassThrough(GL_FALSE) { }
+//.//.//Testing "A simple 2D transformation by rotation."//.//.//		v
+BallObject::BallObject(glm::vec2 pos, GLfloat radius, glm::vec2 velocity, Texture2D sprite, Shader shader)
+	: GameObject(pos, glm::vec2(radius * 2, radius * 2), sprite, glm::vec3(1.0f), velocity),
+	Radius(radius), Stuck(true), Sticky(GL_FALSE), PassThrough(GL_FALSE), shader(shader), texture(texture)
+{
+	this->Init();
+}
+//.//.//Testing "A simple 2D transformation by rotation."//.//.//		^
 
 glm::vec2 BallObject::Move(GLfloat dt, GLuint window_width)
 {
@@ -44,3 +52,28 @@ void BallObject::Reset(glm::vec2 position, glm::vec2 velocity)
 	this->Sticky = GL_FALSE;
 	this->PassThrough = GL_FALSE;
 }
+
+//.//.//Testing "A simple 2D transformation by rotation."//.//.//		v
+void BallObject::Init()
+{
+	trans = glm::mat4(1.0f);
+}
+//.//.//Testing "A simple 2D transformation by rotation."//.//.//		^
+//.//.//Testing "A simple 2D transformation by rotation."//.//.//		v
+void BallObject::Update(float dt)
+{
+
+	//this->Rotation += (dt * 0.5f);
+
+}
+//.//.//Testing "A simple 2D transformation by rotation."//.//.//		^
+//.//.//Testing "A simple 2D transformation by rotation."//.//.//		v
+void BallObject::Draw(SpriteRenderer &renderer)
+{
+	//this->shader.Use();
+	//this->shader.SetMatrix4("trans", trans, true);
+	//this->texture.Bind();
+	renderer.DrawSprite(this->Sprite, this->Position, this->Size, this->Rotation, this->Color);
+
+}
+//.//.//Testing "A simple 2D transformation by rotation."//.//.//		^
