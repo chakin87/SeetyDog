@@ -63,7 +63,7 @@ void BallObject::Init()
 void BallObject::Update(float dt)
 {
 
-	//this->Rotation += (dt * 0.5f);
+	this->Rotation += (dt * 0.5f);
 
 }
 //.//.//Testing "A simple 2D transformation by rotation."//.//.//		^
