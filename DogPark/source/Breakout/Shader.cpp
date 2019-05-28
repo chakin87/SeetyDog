@@ -7,10 +7,8 @@
 
 Shader::Shader(const std::string & filepath)
 {
-	// TODO: Fix this hard coded filePath
 	ShaderProgramSource source = ParseShader(filepath);
 	this->Compile(source.VertexSource, source.FragmentSource);
-	//this->GetShader();
 }
 
 Shader & Shader::Use()

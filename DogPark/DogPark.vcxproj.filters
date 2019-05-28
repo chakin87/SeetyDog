@@ -85,7 +85,4 @@
       <Filter>Breakout</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="source\Breakout\Resources\Shaders\ball.shader" />
-  </ItemGroup>
 </Project>

@@ -24,6 +24,11 @@ using namespace irrklang;
 // Game-related State data
 SpriteRenderer   *Renderer;
 GameObject        *Player;
+
+GameObject		  *Gun;
+GameObject        *Bullets[50];
+unsigned int      bulletTimer[50];
+
 BallObject        *Ball;
 ParticleGenerator *Particles;
 PostProcessor     *Effects;
@@ -52,19 +57,13 @@ void Game::Init()
 	// Load shaders
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/basic.shader", (std::string)"sprite");
 	//.//.//Testing "A simple 2D transformation by rotation." //.//.//
-	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/ball.shader", (std::string)"ballsprite");
+	//.//.//ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/ball.shader", (std::string)"ballsprite");
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/particle.shader", (std::string)"particle");
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/postprocessing.shader", (std::string)"postprocessing");
 	// Configure shaders
 	//glm::mat4 projection = glm::mat4(1.0f);
-	glm::mat4        projection = glm::ortho(0.0f, static_cast<GLfloat>(this->m_Width), static_cast<GLfloat>(this->m_Height), 0.0f, -1.0f, 1.0f);
+	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(this->m_Width), static_cast<GLfloat>(this->m_Height), 0.0f, -1.0f, 1.0f);
 
-	//.//.//Testing "A simple 2D transformation by rotation."//.//.//
-	///.///glm::mat4 trans = glm::mat4(1.0f);
-	///.///trans = glm::rotate(trans, glm::radians(180.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	///.///ResourceManager::GetShader("ballsprite").Use().SetInteger("sprite", 0);
-	///.///ResourceManager::GetShader("ballsprite").Use().SetMatrix4("trans", trans, true);
-	
 
 	ResourceManager::GetShader("sprite").Use().SetInteger("sprite", 0);
 	ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
@@ -72,6 +71,12 @@ void Game::Init()
 	ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
 	// Load textures
 	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/background.jpg", GL_FALSE, "background");
+	
+	
+	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/machine_gun.png", GL_TRUE, "gun");
+	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/bullet.png", GL_TRUE, "bullet");
+	
+	
 	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/awesomefaceo.png", GL_TRUE, "face");
 	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/block.png", GL_FALSE, "block");
 	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/block_solid.png", GL_FALSE, "block_solid");
@@ -103,25 +108,34 @@ void Game::Init()
 	glm::vec2 playerPos = glm::vec2(this->m_Width / 2 - PLAYER_SIZE.x / 2, this->m_Height - PLAYER_SIZE.y);
 	Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
 
+
+	glm::vec2 gunPos = playerPos - GUN_SIZE;
+	gunPos.x += GUN_SIZE.x;
+	gunPos.y += 3.0f;
+	Gun = new GameObject(gunPos, GUN_SIZE, ResourceManager::GetTexture("gun"));
+
+
+
 	glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
-
-	//.//.//Testing "A simple 2D transformation by rotation."//.//.//		v
 	Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
-	//Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"), ResourceManager::GetShader("ballsprite"));
-	
-
-
-
-
-	//.//.//Testing "A simple 2D transformation by rotation."//.//.//		^
-
-
 	// Audio
 	SoundEngine->play2D("source/Breakout/Resources/Sounds/breakout.mp3", GL_TRUE);
 }
 
 void Game::EventInput(SeetyDog::Event& event)
 {
+
+
+	if (SeetyDog::Input::IsMouseButtonPressed(SD_MOUSE_BUTTON_LEFT)) {
+		glm::vec2 bulletPos = Gun->Position;
+		bulletPos.x += GUN_SIZE.x * .5f;
+		bulletPos.y -= Gun->Size.y;
+		Bullets[0] = new GameObject(bulletPos, glm::vec2(6.0f, 8.0f), ResourceManager::GetTexture("bullet"));
+		SD_TRACE("Mouse Button Pressed!");
+	}
+
+
+
 	if (event.GetEventType() == SeetyDog::EventType::KeyPressed) {
 		if (SeetyDog::Input::IsKeyPressed(SD_KEY_ESCAPE)) {
 			SD_INFO("Escape key hit");
@@ -140,6 +154,7 @@ void Game::EventInput(SeetyDog::Event& event)
 				Ball->Stuck = true;
 			}
 		}
+	
 		if (this->m_State == GAME_MENU)
 		{
 			if (SeetyDog::Input::IsKeyPressed(SD_KEY_ENTER))
@@ -184,6 +199,7 @@ void Game::ProcesInput(float dt)
 				Player->Position.x -= velocity;
 				if (Ball->Stuck)
 					Ball->Position.x -= velocity;
+					Gun->Position.x -= velocity;
 			}
 		}
 		if (SeetyDog::Input::IsKeyPressed(SD_KEY_D)) {
@@ -191,6 +207,7 @@ void Game::ProcesInput(float dt)
 				Player->Position.x += velocity;
 				if (Ball->Stuck)
 					Ball->Position.x += velocity;
+					Gun->Position.x += velocity;
 			}
 		}
 		// For Debugging Use Only! :P
@@ -269,6 +286,11 @@ void Game::Update(float dt)
 		if (ShakeTime <= 0.0f)
 			Effects->Shake = false;
 	}
+
+	if (Bullets[0]) {
+		Bullets[0]->Position += VELOCITY * dt;
+	}
+
 }
 
 void Game::Render()
@@ -282,6 +304,16 @@ void Game::Render()
 		this->Levels[this->Level].Draw(*Renderer);
 		// Draw player
 		Player->Draw(*Renderer);
+
+		
+		Gun->Draw(*Renderer);
+		if (Bullets[0]) {
+			Bullets[0]->Draw(*Renderer);
+		}
+
+
+
+
 		// Draw PowerUps
 		for (PowerUp &powerUp : this->PowerUps)
 			if (!powerUp.Destroyed)

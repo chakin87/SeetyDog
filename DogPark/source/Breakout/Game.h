@@ -13,6 +13,10 @@
 enum GameState;
 enum Direction;
 
+
+const glm::vec2 GUN_SIZE(18.0f, 53.0f);
+
+
 // Initial size of the player paddle
 const glm::vec2 PLAYER_SIZE(100, 20);
 // Initial velocity of the player paddle

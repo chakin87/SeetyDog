@@ -165,9 +165,6 @@
       <Project>{E9F2D467-D5BF-2F73-FED8-1D1BEA046501}</Project>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="source\Breakout\Resources\Shaders\ball.shader" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
