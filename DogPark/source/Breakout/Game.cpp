@@ -21,6 +21,9 @@ using namespace irrklang;
 #include "TextRenderer.h"
 #include <GLFW/include/GLFW/glfw3.h>
 
+
+
+
 // Game-related State data
 SpriteRenderer   *Renderer;
 PlayerObject     *Player;
@@ -53,8 +56,6 @@ void Game::Init()
 {
 	// Load shaders
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/basic.shader", (std::string)"sprite");
-	//.//.//Testing "A simple 2D transformation by rotation." //.//.//
-	//.//.//ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/ball.shader", (std::string)"ballsprite");
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/particle.shader", (std::string)"particle");
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/postprocessing.shader", (std::string)"postprocessing");
 	// Configure shaders
@@ -106,18 +107,17 @@ void Game::Init()
 	Player = new PlayerObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"), 
 		ResourceManager::GetTexture("gun"), ResourceManager::GetShader("sprite"), ResourceManager::GetShader("sprite"));
 
-//./
-//./	glm::vec2 gunPos = playerPos - GUN_SIZE;
-//./	gunPos.x += GUN_SIZE.x;
-//./	gunPos.y += 3.0f;
-//./	Gun = new GameObject(gunPos, GUN_SIZE, ResourceManager::GetTexture("gun"));
-
 
 
 	glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
 	Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
 	// Audio
 	SoundEngine->play2D("source/Breakout/Resources/Sounds/breakout.mp3", GL_TRUE);
+
+
+	
+
+	SD_TRACE(sizeof(Shader));
 }
 
 void Game::EventInput(SeetyDog::Event& event)
@@ -182,13 +182,17 @@ void Game::ProcesInput(float dt)
 		float velocity = PLAYER_VELOCITY * dt;
 
 		if (SeetyDog::Input::IsKeyPressed(SD_KEY_A)) {
-			Player->Move(-velocity, this->m_Width);
+			if (Player->Position.x >= 0) {
+				Player->Move(-velocity, this->m_Width);
+			}
 				if (Ball->Stuck)
 					Ball->Position.x -= velocity;
 			
 		}
 		if (SeetyDog::Input::IsKeyPressed(SD_KEY_D)) {
-			Player->Move(velocity, this->m_Width);
+			if (Player->Position.x <= m_Width - Player->Size.x) {
+				Player->Move(velocity, this->m_Width);
+			}
 				if (Ball->Stuck)
 					Ball->Position.x += velocity;
 			
@@ -236,6 +240,10 @@ void Game::Update(float dt)
 //.//.//Testing "A simple 2D transformation by rotation."//.//.//		v
 	Ball->Update(dt);
 //.//.//Testing "A simple 2D transformation by rotation."//.//.//		^
+
+
+	Player->Update(dt);
+
 
 	// Check for collisions
 	this->DoCollisions();

@@ -36,9 +36,9 @@ Shader ResourceManager::GetShader(std::string name)
 	return Shaders[name];
 }
 
-Texture2D ResourceManager::LoadTexture(const GLchar *file, GLboolean alpha, std::string name)
+Texture2D ResourceManager::LoadTexture(const GLchar *file, GLboolean alpha, std::string name/* = ""  */)
 {
-	Textures[name] = loadTextureFromFile(file, alpha);
+	Textures[name] = loadTextureFromFile(file, alpha, name);
 	return Textures[name];
 }
 
@@ -109,7 +109,7 @@ Shader ResourceManager::loadShaderFromFile(std::string & shaderFilePath)
 	return s.GetShader();
 }
 
-Texture2D ResourceManager::loadTextureFromFile(const GLchar *file, GLboolean alpha)
+Texture2D ResourceManager::loadTextureFromFile(const GLchar *file, GLboolean alpha, std::string name)
 {
 	// Create Texture object
 	Texture2D texture;
@@ -123,12 +123,17 @@ Texture2D ResourceManager::loadTextureFromFile(const GLchar *file, GLboolean alp
 	//stbi_set_flip_vertically_on_load(1);
 	unsigned char* image = stbi_load(file, &width, &height, 0, texture.Image_Format == GL_RGBA ? SOIL_LOAD_RGBA : SOIL_LOAD_RGB);
 	
+	std::string  strT = "[";
+	strT += name;
+	strT += "] image load ";
+	strT += (image ? "success" : "failed");
+
 	if (image) {
-		SD_TRACE("image load success");
+		SD_TRACE(strT);
 
 	}
 	else {
-		SD_TRACE("image load NON-success");
+		SD_TRACE(strT);
 		
 	}
 	

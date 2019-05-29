@@ -1,7 +1,2 @@
 ﻿  PlayerObject.cpp
-c:\cpp\seetydog\dogpark\source\breakout\playerobject.cpp(77): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
   DogPark.vcxproj -> C:\CPP\SeetyDog\DogPark\..\bin\Debug-windows-x86_64\DogPark\DogPark.exe

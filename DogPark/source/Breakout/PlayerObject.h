@@ -1,8 +1,9 @@
 #pragma once
 #include "GameObject.h"
-
+#include <vector>
 #include <SeetyDog/Events/Event.h>
 
+struct BulletObject;
 
 class PlayerObject : public GameObject
 {
@@ -24,23 +25,39 @@ public://Methods
 public://Members
 	//glm::vec2		Position;
 	//glm::vec2		Size;
+
 	
 private://Members
-	void ShootGun();
-	void UpdateGunPosition();
+	void						ShootGun();
+	void						UpdateGunPosition();
 private://Members
-	glm::vec2		m_PaddleInitSize;
-	glm::vec2		m_PaddleInitPosition;
-	glm::vec2		m_GunSize;
-	float			m_PlayerSpeed;
-	float			m_BulletSpeed;
-	float			m_GunRotation;
-	glm::vec2		m_GunPosition;
-	glm::vec2		m_BulletVelocity;
-	Texture2D		m_PaddleTex;
-	Texture2D		m_GunTex;
-	Shader			m_PlayerShader;
-	Shader			m_BulletShader;
-	unsigned int	VAO;
-	glm::mat4		trans;
+	unsigned int				VAO;
+	//Paddle Related Members
+	glm::vec2					m_PaddleInitSize;
+	glm::vec2					m_PaddleInitPosition;
+	float						m_PlayerSpeed;
+	Texture2D					m_PaddleTex;
+	Shader						m_PlayerShader;
+	//Gun Related Members
+	glm::vec2					m_GunSize;
+	float						m_GunRotation;
+	glm::vec2					m_GunPosition;
+	Texture2D					m_GunTex;
+	//Bullet Related Members
+	std::vector<BulletObject>	m_Bullets;
+	const short					m_MAX_BULLETS = 30;
+	Shader						m_BulletShader;
+
+
+};
+struct BulletObject : public PlayerObject {
+	BulletObject() : m_IsFlying(false)
+	{}
+
+	float						m_BulletSpeed;
+	glm::vec2					m_BulletVelocity;
+	glm::vec2					m_Position;
+	unsigned int				m_NumActiveBullets;
+	bool						m_IsFlying;
+
 };
