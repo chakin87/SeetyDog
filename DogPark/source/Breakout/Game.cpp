@@ -23,11 +23,8 @@ using namespace irrklang;
 
 // Game-related State data
 SpriteRenderer   *Renderer;
-GameObject        *Player;
+PlayerObject     *Player;
 
-GameObject		  *Gun;
-GameObject        *Bullets[50];
-unsigned int      bulletTimer[50];
 
 BallObject        *Ball;
 ParticleGenerator *Particles;
@@ -106,13 +103,14 @@ void Game::Init()
 	this->Level = 0;
 	// Configure game objects
 	glm::vec2 playerPos = glm::vec2(this->m_Width / 2 - PLAYER_SIZE.x / 2, this->m_Height - PLAYER_SIZE.y);
-	Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
+	Player = new PlayerObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"), 
+		ResourceManager::GetTexture("gun"), ResourceManager::GetShader("sprite"), ResourceManager::GetShader("sprite"));
 
-
-	glm::vec2 gunPos = playerPos - GUN_SIZE;
-	gunPos.x += GUN_SIZE.x;
-	gunPos.y += 3.0f;
-	Gun = new GameObject(gunPos, GUN_SIZE, ResourceManager::GetTexture("gun"));
+//./
+//./	glm::vec2 gunPos = playerPos - GUN_SIZE;
+//./	gunPos.x += GUN_SIZE.x;
+//./	gunPos.y += 3.0f;
+//./	Gun = new GameObject(gunPos, GUN_SIZE, ResourceManager::GetTexture("gun"));
 
 
 
@@ -124,17 +122,6 @@ void Game::Init()
 
 void Game::EventInput(SeetyDog::Event& event)
 {
-
-
-	if (SeetyDog::Input::IsMouseButtonPressed(SD_MOUSE_BUTTON_LEFT)) {
-		glm::vec2 bulletPos = Gun->Position;
-		bulletPos.x += GUN_SIZE.x * .5f;
-		bulletPos.y -= Gun->Size.y;
-		Bullets[0] = new GameObject(bulletPos, glm::vec2(6.0f, 8.0f), ResourceManager::GetTexture("bullet"));
-		SD_TRACE("Mouse Button Pressed!");
-	}
-
-
 
 	if (event.GetEventType() == SeetyDog::EventType::KeyPressed) {
 		if (SeetyDog::Input::IsKeyPressed(SD_KEY_ESCAPE)) {
@@ -195,20 +182,16 @@ void Game::ProcesInput(float dt)
 		float velocity = PLAYER_VELOCITY * dt;
 
 		if (SeetyDog::Input::IsKeyPressed(SD_KEY_A)) {
-			if (Player->Position.x >= 0) {
-				Player->Position.x -= velocity;
+			Player->Move(-velocity, this->m_Width);
 				if (Ball->Stuck)
 					Ball->Position.x -= velocity;
-					Gun->Position.x -= velocity;
-			}
+			
 		}
 		if (SeetyDog::Input::IsKeyPressed(SD_KEY_D)) {
-			if (Player->Position.x <= this->m_Width - Player->Size.x) {
-				Player->Position.x += velocity;
+			Player->Move(velocity, this->m_Width);
 				if (Ball->Stuck)
 					Ball->Position.x += velocity;
-					Gun->Position.x += velocity;
-			}
+			
 		}
 		// For Debugging Use Only! :P
 		if (SeetyDog::Input::IsKeyPressed(SD_KEY_LEFT_SHIFT)) {
@@ -242,6 +225,7 @@ void Game::ProcesInput(float dt)
 			}
 		}
 	}
+
 }
 
 void Game::Update(float dt)
@@ -286,11 +270,6 @@ void Game::Update(float dt)
 		if (ShakeTime <= 0.0f)
 			Effects->Shake = false;
 	}
-
-	if (Bullets[0]) {
-		Bullets[0]->Position += VELOCITY * dt;
-	}
-
 }
 
 void Game::Render()
@@ -304,14 +283,6 @@ void Game::Render()
 		this->Levels[this->Level].Draw(*Renderer);
 		// Draw player
 		Player->Draw(*Renderer);
-
-		
-		Gun->Draw(*Renderer);
-		if (Bullets[0]) {
-			Bullets[0]->Draw(*Renderer);
-		}
-
-
 
 
 		// Draw PowerUps
@@ -356,8 +327,7 @@ void Game::ResetLevel()
 void Game::ResetPlayer()
 {
 	// Reset player/ball stats
-	Player->Size = PLAYER_SIZE;
-	Player->Position = glm::vec2(this->m_Width / 2 - PLAYER_SIZE.x / 2, this->m_Height - PLAYER_SIZE.y);
+	Player->Reset();
 	Ball->Reset(Player->Position + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -(BALL_RADIUS * 2)), INITIAL_BALL_VELOCITY);
 	// Also disable all active powerups
 	Effects->Chaos = Effects->Confuse = GL_FALSE;

@@ -45,6 +45,7 @@
     <ClInclude Include="source\Breakout\Texture2D.h">
       <Filter>Breakout</Filter>
     </ClInclude>
+    <ClInclude Include="source\Breakout\PlayerObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Breakout\BreakoutLayer.cpp">
@@ -84,5 +85,6 @@
     <ClCompile Include="source\Breakout\BallObject.cpp">
       <Filter>Breakout</Filter>
     </ClCompile>
+    <ClCompile Include="source\Breakout\PlayerObject.cpp" />
   </ItemGroup>
 </Project>

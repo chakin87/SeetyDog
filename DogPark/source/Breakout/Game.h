@@ -9,6 +9,7 @@
 #include "BallObject.h"
 #include "GameLevel.h"
 #include "PowerUp.h"
+#include "PlayerObject.h"
 
 enum GameState;
 enum Direction;

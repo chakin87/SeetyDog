@@ -1,7 +1,7 @@
 # Directories to ignore
 .vs/
 bin-intermediate/
-bin/
+bin-int/
 
 # Files to ignore
 *.user
