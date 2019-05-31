@@ -11,7 +11,7 @@ public://Constructors/Destructors
 	PlayerObject();
 	
 	PlayerObject(glm::vec2 pos, glm::vec2 paddleSize, Texture2D paddleSprite,
-		Texture2D gunSprite, Shader paddleShader, Shader bulletShader);
+		Texture2D gunSprite, Texture2D bulletSprite, Shader paddleShader, Shader bulletShader);
 
 public://Methods
 	void		Move(float velocity, unsigned int winWidth);
@@ -44,9 +44,12 @@ private://Members
 	glm::vec2					m_GunPosition;
 	Texture2D					m_GunTex;
 	//Bullet Related Members
+	Texture2D					m_BulletTex;
 	std::vector<BulletObject>	m_Bullets;
+	glm::vec2					m_BulletSize;
 	const short					m_MAX_BULLETS = 30;
 	Shader						m_BulletShader;
+	glm::vec2					m_BulletVelocity;
 
 
 };
@@ -55,9 +58,8 @@ struct BulletObject : public PlayerObject {
 	{}
 
 	float						m_BulletSpeed;
-	glm::vec2					m_BulletVelocity;
+	//glm::vec2					m_BulletPosition;
 	glm::vec2					m_Position;
-	unsigned int				m_NumActiveBullets;
 	bool						m_IsFlying;
 
 };

@@ -105,7 +105,7 @@ void Game::Init()
 	// Configure game objects
 	glm::vec2 playerPos = glm::vec2(this->m_Width / 2 - PLAYER_SIZE.x / 2, this->m_Height - PLAYER_SIZE.y);
 	Player = new PlayerObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"), 
-		ResourceManager::GetTexture("gun"), ResourceManager::GetShader("sprite"), ResourceManager::GetShader("sprite"));
+		ResourceManager::GetTexture("gun"), ResourceManager::GetTexture("bullet"), ResourceManager::GetShader("sprite"), ResourceManager::GetShader("sprite"));
 
 
 
@@ -173,6 +173,7 @@ void Game::EventInput(SeetyDog::Event& event)
 			}
 		}
 	}
+	Player->OnEvent(event);
 }
 
 void Game::ProcesInput(float dt)
@@ -291,7 +292,7 @@ void Game::Render()
 		this->Levels[this->Level].Draw(*Renderer);
 		// Draw player
 		Player->Draw(*Renderer);
-
+		//Renderer->DrawSprite(ResourceManager::GetTexture("bullet"), glm::vec2(300.0f, 600.0f), glm::vec2(100, 105), 0.0f);
 
 		// Draw PowerUps
 		for (PowerUp &powerUp : this->PowerUps)
