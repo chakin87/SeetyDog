@@ -87,4 +87,7 @@
     </ClCompile>
     <ClCompile Include="source\Breakout\PlayerObject.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="source\Breakout\Resources\Shaders\bullet_particle.shader" />
+  </ItemGroup>
 </Project>

@@ -28,6 +28,27 @@ void ParticleGenerator::Update(GLfloat dt, GameObject &object, GLuint newParticl
 	}
 }
 
+void ParticleGenerator::Update(GLfloat dt, glm::vec2 position, GLuint newParticles, glm::vec2 offset)
+{
+	// Add new particles 
+	for (GLuint i = 0; i < newParticles; ++i)
+	{
+		int unusedParticle = this->firstUnusedParticle();
+		this->respawnParticle(this->particles[unusedParticle], position, offset);
+	}
+	// Update all particles
+	for (GLuint i = 0; i < this->amount; ++i)
+	{
+		Particle &p = this->particles[i];
+		p.Life -= dt; // reduce life
+		if (p.Life > 0.0f)
+		{	// particle is alive, thus update
+			p.Position -= p.Velocity * dt;
+			p.Color.a -= dt * 2.5;
+		}
+	}
+}
+
 // Render all particles
 void ParticleGenerator::Draw()
 {
@@ -110,4 +131,14 @@ void ParticleGenerator::respawnParticle(Particle &particle, GameObject &object, 
 	particle.Color = glm::vec4(rColor, rColor, rColor, 1.0f);
 	particle.Life = 1.0f;
 	particle.Velocity = object.Velocity * 0.1f;
+}
+
+void ParticleGenerator::respawnParticle(Particle & particle, glm::vec2 position, glm::vec2 offset)
+{
+	GLfloat random = ((rand() % 100) - 50) / 7.0f;
+	GLfloat rColor = 0.5 + ((rand() % 100) / 100.0f);
+	particle.Position = (position) + random + offset;
+	particle.Color = glm::vec4(rColor, rColor, rColor, 1.0f);
+	particle.Life = 1.0f;
+	particle.Velocity = glm::vec2(0.0f, -5.0f);
 }

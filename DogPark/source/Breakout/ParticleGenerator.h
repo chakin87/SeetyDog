@@ -29,6 +29,7 @@ public:
 	ParticleGenerator(Shader shader, Texture2D texture, GLuint amount);
 	// Update all particles
 	void Update(GLfloat dt, GameObject &object, GLuint newParticles, glm::vec2 offset = glm::vec2(0.0f, 0.0f));
+	void Update(GLfloat dt, glm::vec2 position, GLuint newParticles, glm::vec2 offset = glm::vec2(0.0f, 0.0f));
 	// Render all particles
 	void Draw();
 private:
@@ -45,4 +46,5 @@ private:
 	GLuint firstUnusedParticle();
 	// Respawns particle
 	void respawnParticle(Particle &particle, GameObject &object, glm::vec2 offset = glm::vec2(0.0f, 0.0f));
+	void respawnParticle(Particle &particle, glm::vec2 position, glm::vec2 offset = glm::vec2(0.0f, 0.0f));
 };

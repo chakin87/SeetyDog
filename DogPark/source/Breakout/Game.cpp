@@ -31,6 +31,7 @@ PlayerObject     *Player;
 
 BallObject        *Ball;
 ParticleGenerator *Particles;
+ParticleGenerator *BulletParticles;
 PostProcessor     *Effects;
 ISoundEngine      *SoundEngine = createIrrKlangDevice();
 TextRenderer      *Text;
@@ -57,6 +58,7 @@ void Game::Init()
 	// Load shaders
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/basic.shader", (std::string)"sprite");
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/particle.shader", (std::string)"particle");
+	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/bullet_particle.shader", (std::string)"bulletParticle");
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/postprocessing.shader", (std::string)"postprocessing");
 	// Configure shaders
 	//glm::mat4 projection = glm::mat4(1.0f);
@@ -67,6 +69,8 @@ void Game::Init()
 	ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
 	ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);
 	ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
+	ResourceManager::GetShader("bulletParticle").Use().SetInteger("sprite", 0);
+	ResourceManager::GetShader("bulletParticle").SetMatrix4("projection", projection);
 	// Load textures
 	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/background.jpg", GL_FALSE, "background");
 	
@@ -80,6 +84,7 @@ void Game::Init()
 	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/block_solid.png", GL_FALSE, "block_solid");
 	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/paddle.png", true, "paddle");
 	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/particle.png", GL_TRUE, "particle");
+	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/bulletParticle.png", GL_TRUE, "bulletParticle");
 	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/powerup_speed.png", GL_TRUE, "powerup_speed");
 	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/powerup_sticky.png", GL_TRUE, "powerup_sticky");
 	ResourceManager::LoadTexture("source/Breakout/Resources/Textures/powerup_increase.png", GL_TRUE, "powerup_increase");
@@ -89,6 +94,7 @@ void Game::Init()
 	// Set render-specific controls
 	Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 	Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
+	BulletParticles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("bulletParticle"), 200);
 	Effects = new PostProcessor(ResourceManager::GetShader("postprocessing"), this->m_Width, this->m_Height);
 	Text = new TextRenderer(this->m_Width, this->m_Height);
 	Text->Load("source/Breakout/Resources/Fonts/OCRAEXT.TTF", 24);
@@ -250,6 +256,12 @@ void Game::Update(float dt)
 	this->DoCollisions();
 	// Update particles
 	Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2));
+	for (auto bullet : Player->m_Bullets) {
+		if (bullet.m_IsHit) {
+			BulletParticles->Update(dt, bullet.m_HitLocation, 5);
+		}
+	}
+
 	// Update PowerUps
 	this->UpdatePowerUps(dt);
 	// Check loss condition
@@ -300,6 +312,12 @@ void Game::Render()
 				powerUp.Draw(*Renderer);
 		// Draw particles	
 		Particles->Draw();
+		for (auto bullet : Player->m_Bullets) {
+			if (bullet.m_IsHit) {
+				BulletParticles->Draw();
+			}
+		}
+
 		// Draw ball
 		Ball->Draw(*Renderer);
 		//Finish effects renderer
@@ -482,6 +500,10 @@ void Game::DoCollisions()
 	{
 		if (!box.Destroyed)
 		{
+			for (auto& bullets : Player->m_Bullets) {
+				bullets.Collision(box);
+			}
+			//./Collision collisionBullet = CheckCollision(Player->m_Bullets[0], box);
 			Collision collision = CheckCollision(*Ball, box);
 			if (std::get<0>(collision)) // If collision is true
 			{

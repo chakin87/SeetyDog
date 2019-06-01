@@ -13,7 +13,7 @@ PlayerObject::PlayerObject()
 }
 
 PlayerObject::PlayerObject(glm::vec2 pos, glm::vec2 paddleSize, Texture2D paddleSprite, Texture2D gunSprite, Texture2D bulletSprite, Shader paddleShader, Shader bulletShader)
-	: m_PaddleTex(paddleSprite), m_GunTex(gunSprite), m_BulletTex(bulletSprite),// m_NumActiveBullets(0),
+	: m_PaddleTex(paddleSprite), m_GunTex(gunSprite), m_BulletTex(bulletSprite),
 	m_PlayerShader(paddleShader), m_BulletShader(bulletShader), m_PaddleInitSize(paddleSize), m_PaddleInitPosition(pos)//,
 	//m_BulletVelocity(-100.0f)
 {
@@ -61,8 +61,11 @@ void PlayerObject::Update(float dt)
 {
 	for (auto& bullet : m_Bullets) {
 		if (bullet.m_IsFlying) {
-			
-			bullet.m_Position += m_BulletVelocity * dt;
+ 			bullet.m_Position += m_BulletVelocity * dt;
+			bullet.Position = bullet.m_Position;
+		}
+		else if (bullet.m_IsHit) {
+
 		}
 	}
 }
@@ -82,9 +85,10 @@ void PlayerObject::Draw(SpriteRenderer & renderer)
 void PlayerObject::ShootGun()
 {
 	if (m_Bullets.size() <= m_MAX_BULLETS) {
-		SD_TRACE("Mouse Button Pressed!");
+	
 		m_Bullets.emplace_back(BulletObject());
 		m_Bullets.back().m_IsFlying = true;
+		m_Bullets.back().m_IsHit = false;
 		m_Bullets.back().m_Position.x = this->m_GunPosition.x - 19.0f;
 		m_Bullets.back().m_Position.y = this->m_GunPosition.y - 50.f;// (m_GunSize.y);
 	}
@@ -100,4 +104,22 @@ void PlayerObject::UpdateGunPosition()
 	m_GunPosition.x = Position.x - 5.0f;
 	m_GunPosition.y = (Position.y - m_GunSize.y + 8.0f);
 	m_GunRotation = 0.0f;
+}
+
+bool BulletObject::Collision(GameObject & object)
+{
+	if (this->m_IsFlying) {
+	
+		if (this->m_Position.y - this->Size.y < object.Position.y) {
+			SD_TRACE("Hit with the bullet!");
+			this->m_IsHit = true;
+			this->m_HitLocation = m_Position;
+			this->m_HitLocation.y = m_Position.y - (this->Size.y + 4.0f);
+			this->m_IsFlying = false;
+		}
+	}
+
+
+
+	return false;
 }
