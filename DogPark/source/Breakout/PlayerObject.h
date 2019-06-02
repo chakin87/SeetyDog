@@ -28,9 +28,10 @@ public://Members
 
 	std::vector<BulletObject>	m_Bullets;
 	
-private://Members
+private://Methods
 	void						ShootGun();
 	void						UpdateGunPosition();
+	void						RemoveDeadBullet(BulletObject& bullet);
 private://Members
 	unsigned int				VAO;
 	//Paddle Related Members
@@ -50,9 +51,17 @@ private://Members
 	const short					m_MAX_BULLETS = 30;
 	Shader						m_BulletShader;
 	glm::vec2					m_BulletVelocity;
-	//Particle					m_BulletParticle;
+	unsigned short				m_BulletIndex;
 
 
+
+
+public:
+	// We create a predicate to find the 'dead bullets' using find_if algorithm
+	template <typename T>
+	bool is_hit(const T & n) {
+		return (n.m_IsHit);
+	}
 };
 struct BulletObject : public GameObject {
 	
@@ -69,5 +78,8 @@ struct BulletObject : public GameObject {
 	bool						m_IsFlying;
 	bool						m_IsHit;
 	glm::vec2					m_HitLocation;
+	unsigned short				m_BulletIndex;
+
+	//inline BulletObject operator==(BulletObject& lhs) { if (lhs.m_IsHit) { return lhs; } }
 
 };

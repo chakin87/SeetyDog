@@ -56,6 +56,7 @@ Game::~Game()
 void Game::Init()
 {
 	// Load shaders
+
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/basic.shader", (std::string)"sprite");
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/particle.shader", (std::string)"particle");
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/bullet_particle.shader", (std::string)"bulletParticle");
@@ -484,8 +485,6 @@ GLboolean IsOtherPowerUpActive(std::vector<PowerUp> &powerUps, std::string type)
 	}
 	return GL_FALSE;
 }
-
-
 
 
 // Collision detection

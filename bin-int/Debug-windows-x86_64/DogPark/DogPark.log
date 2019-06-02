@@ -1,13 +1,24 @@
-﻿  Game.cpp
-c:\cpp\seetydog\dogpark\source\breakout\game.cpp(102): warning C4244: 'argument': conversion from 'double' to 'GLuint', possible loss of data
+﻿  BreakoutLayer.cpp
+  Game.cpp
 c:\cpp\seetydog\dogpark\source\breakout\game.cpp(103): warning C4244: 'argument': conversion from 'double' to 'GLuint', possible loss of data
 c:\cpp\seetydog\dogpark\source\breakout\game.cpp(104): warning C4244: 'argument': conversion from 'double' to 'GLuint', possible loss of data
 c:\cpp\seetydog\dogpark\source\breakout\game.cpp(105): warning C4244: 'argument': conversion from 'double' to 'GLuint', possible loss of data
-c:\cpp\seetydog\dogpark\source\breakout\game.cpp(325): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\cpp\seetydog\dogpark\source\breakout\game.cpp(332): warning C4244: 'argument': conversion from 'unsigned int' to 'GLfloat', possible loss of data
-c:\cpp\seetydog\dogpark\source\breakout\game.cpp(338): warning C4244: 'argument': conversion from 'unsigned int' to 'GLfloat', possible loss of data
-c:\cpp\seetydog\dogpark\source\breakout\game.cpp(344): warning C4244: 'argument': conversion from 'float' to 'GLuint', possible loss of data
-c:\cpp\seetydog\dogpark\source\breakout\game.cpp(346): warning C4244: 'argument': conversion from 'float' to 'GLuint', possible loss of data
-c:\cpp\seetydog\dogpark\source\breakout\game.cpp(348): warning C4244: 'argument': conversion from 'float' to 'GLuint', possible loss of data
-c:\cpp\seetydog\dogpark\source\breakout\game.cpp(350): warning C4244: 'argument': conversion from 'float' to 'GLuint', possible loss of data
-  DogPark.vcxproj -> C:\CPP\SeetyDog\DogPark\..\bin\Debug-windows-x86_64\DogPark\DogPark.exe
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(106): warning C4244: 'argument': conversion from 'double' to 'GLuint', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(326): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(333): warning C4244: 'argument': conversion from 'unsigned int' to 'GLfloat', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(339): warning C4244: 'argument': conversion from 'unsigned int' to 'GLfloat', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(345): warning C4244: 'argument': conversion from 'float' to 'GLuint', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(347): warning C4244: 'argument': conversion from 'float' to 'GLuint', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(349): warning C4244: 'argument': conversion from 'float' to 'GLuint', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(351): warning C4244: 'argument': conversion from 'float' to 'GLuint', possible loss of data
+  PlayerObject.cpp
+c:\microsoft visual studio 2017\vc\tools\msvc\14.16.27023\include\algorithm(174): error C2064: term does not evaluate to a function taking 1 arguments
+  c:\cpp\seetydog\dogpark\source\breakout\playerobject.cpp(70): note: see reference to function template instantiation '_InIt std::find_if<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,bool>(_InIt,const _InIt,_Pr)' being compiled
+          with
+          [
+              _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<BulletObject>>>,
+              _Ty=BulletObject,
+              _Pr=bool
+          ]
+  DogParkApp.cpp
+  Generating Code...

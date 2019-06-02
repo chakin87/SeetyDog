@@ -7,13 +7,15 @@
 
 #include "ResourceManager.h"
 
+#include <algorithm>
+
 
 PlayerObject::PlayerObject()
 {
 }
 
 PlayerObject::PlayerObject(glm::vec2 pos, glm::vec2 paddleSize, Texture2D paddleSprite, Texture2D gunSprite, Texture2D bulletSprite, Shader paddleShader, Shader bulletShader)
-	: m_PaddleTex(paddleSprite), m_GunTex(gunSprite), m_BulletTex(bulletSprite),
+	: m_PaddleTex(paddleSprite), m_GunTex(gunSprite), m_BulletTex(bulletSprite),m_BulletIndex(0),
 	m_PlayerShader(paddleShader), m_BulletShader(bulletShader), m_PaddleInitSize(paddleSize), m_PaddleInitPosition(pos)//,
 	//m_BulletVelocity(-100.0f)
 {
@@ -65,7 +67,9 @@ void PlayerObject::Update(float dt)
 			bullet.Position = bullet.m_Position;
 		}
 		else if (bullet.m_IsHit) {
-
+			auto index = std::find_if(m_Bullets.begin(), m_Bullets.end(), is_hit(bullet));
+			SD_TRACE(index);
+			m_Bullets.erase(index);
 		}
 	}
 }
@@ -86,11 +90,13 @@ void PlayerObject::ShootGun()
 {
 	if (m_Bullets.size() <= m_MAX_BULLETS) {
 	
-		m_Bullets.emplace_back(BulletObject());
-		m_Bullets.back().m_IsFlying = true;
-		m_Bullets.back().m_IsHit = false;
-		m_Bullets.back().m_Position.x = this->m_GunPosition.x - 19.0f;
-		m_Bullets.back().m_Position.y = this->m_GunPosition.y - 50.f;// (m_GunSize.y);
+		m_Bullets.emplace(m_Bullets.end(), BulletObject());
+		m_Bullets.front().m_IsFlying = true;
+		m_Bullets.front().m_IsHit = false;
+		m_Bullets.front().m_Position.x = this->m_GunPosition.x - 19.0f;
+		m_Bullets.front().m_Position.y = this->m_GunPosition.y - 50.f;// (m_GunSize.y);
+		m_Bullets.front().m_BulletIndex = m_BulletIndex++; 
+		SD_TRACE(m_Bullets.front().m_BulletIndex);
 	}
 	else {
 		return;
@@ -106,6 +112,18 @@ void PlayerObject::UpdateGunPosition()
 	m_GunRotation = 0.0f;
 }
 
+void PlayerObject::RemoveDeadBullet(BulletObject & bullet)
+{
+	for (auto& bullet : m_Bullets) {
+		//if (bullet.m_IsFlying == false) {
+
+			auto index = std::find(m_Bullets.begin(), m_Bullets.end(), bullet.m_IsFlying == false);
+			SD_TRACE(index);
+			m_Bullets.erase(index);
+		//}
+	}
+}
+
 bool BulletObject::Collision(GameObject & object)
 {
 	if (this->m_IsFlying) {
@@ -116,6 +134,8 @@ bool BulletObject::Collision(GameObject & object)
 			this->m_HitLocation = m_Position;
 			this->m_HitLocation.y = m_Position.y - (this->Size.y + 4.0f);
 			this->m_IsFlying = false;
+			
+		
 		}
 	}
 
