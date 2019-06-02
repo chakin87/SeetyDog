@@ -64,12 +64,12 @@ void PlayerObject::Update(float dt)
 	for (auto& bullet : m_Bullets) {
 		if (bullet.m_IsFlying) {
  			bullet.m_Position += m_BulletVelocity * dt;
-			bullet.Position = bullet.m_Position;
+			//bullet.Position = bullet.m_Position;
 		}
 		else if (bullet.m_IsHit) {
-			auto index = std::find_if(m_Bullets.begin(), m_Bullets.end(), is_hit(bullet));
-			SD_TRACE(index);
-			m_Bullets.erase(index);
+			//auto index = std::find_if(m_Bullets.begin(), m_Bullets.end(), is_hit(bullet));
+			//SD_TRACE(index);
+			//m_Bullets.erase(index);
 		}
 	}
 }
@@ -117,10 +117,10 @@ void PlayerObject::RemoveDeadBullet(BulletObject & bullet)
 	for (auto& bullet : m_Bullets) {
 		//if (bullet.m_IsFlying == false) {
 
-			auto index = std::find(m_Bullets.begin(), m_Bullets.end(), bullet.m_IsFlying == false);
-			SD_TRACE(index);
-			m_Bullets.erase(index);
-		//}
+		//	auto index = std::find(m_Bullets.begin(), m_Bullets.end(), bullet.m_IsFlying == false);
+		//	SD_TRACE(index);
+		//	m_Bullets.erase(index);
+		////}
 	}
 }
 

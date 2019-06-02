@@ -140,6 +140,7 @@
     <ClInclude Include="source\Breakout\PlayerObject.h" />
     <ClInclude Include="source\Breakout\PostProcessor.h" />
     <ClInclude Include="source\Breakout\PowerUp.h" />
+    <ClInclude Include="source\Breakout\ProjectileObject.h" />
     <ClInclude Include="source\Breakout\ResourceManager.h" />
     <ClInclude Include="source\Breakout\Shader.h" />
     <ClInclude Include="source\Breakout\SpriteRenderer.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="source\Breakout\ParticleGenerator.cpp" />
     <ClCompile Include="source\Breakout\PlayerObject.cpp" />
     <ClCompile Include="source\Breakout\PostProcessor.cpp" />
+    <ClCompile Include="source\Breakout\ProjectileObject.cpp" />
     <ClCompile Include="source\Breakout\ResourceManager.cpp" />
     <ClCompile Include="source\Breakout\Shader.cpp" />
     <ClCompile Include="source\Breakout\SpriteRenderer.cpp" />

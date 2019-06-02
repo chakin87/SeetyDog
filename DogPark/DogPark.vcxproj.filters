@@ -46,6 +46,7 @@
       <Filter>Breakout</Filter>
     </ClInclude>
     <ClInclude Include="source\Breakout\PlayerObject.h" />
+    <ClInclude Include="source\Breakout\ProjectileObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Breakout\BreakoutLayer.cpp">
@@ -86,6 +87,7 @@
       <Filter>Breakout</Filter>
     </ClCompile>
     <ClCompile Include="source\Breakout\PlayerObject.cpp" />
+    <ClCompile Include="source\Breakout\ProjectileObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source\Breakout\Resources\Shaders\bullet_particle.shader" />
