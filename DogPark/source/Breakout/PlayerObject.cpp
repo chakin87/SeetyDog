@@ -37,7 +37,7 @@ void PlayerObject::Move(float velocity, unsigned int winWidth)
 void PlayerObject::OnEvent(SeetyDog::Event& event)
 {
 	if (SeetyDog::Input::IsMouseButtonPressed(SD_MOUSE_BUTTON_LEFT)) {
-		this->m_Bullets->ShootProjectile(m_GunPosition);
+		this->m_Bullets->ShootProjectile(glm::vec2(m_GunPosition.x + (m_GunSize.x * .5F), m_GunPosition.y - m_GunSize.y * 0.2f));
 	
 	}
 	this->UpdateGunPosition();
