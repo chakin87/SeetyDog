@@ -10,6 +10,7 @@
 #include "GameLevel.h"
 #include "PowerUp.h"
 #include "PlayerObject.h"
+#include "ProjectileObject.h"
 
 enum GameState;
 enum Direction;

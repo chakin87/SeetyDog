@@ -29,12 +29,13 @@ SpriteRenderer   *Renderer;
 PlayerObject     *Player;
 
 
-BallObject        *Ball;
-ParticleGenerator *Particles;
-ParticleGenerator *BulletParticles;
-PostProcessor     *Effects;
-ISoundEngine      *SoundEngine = createIrrKlangDevice();
-TextRenderer      *Text;
+BallObject				*Ball;
+ParticleGenerator		*Particles;
+ParticleGenerator		*BulletParticles;
+PostProcessor			*Effects;
+ISoundEngine			*SoundEngine = createIrrKlangDevice();
+TextRenderer			*Text;
+ProjectileGenerator		*PG;
 
 Game::Game(unsigned int width, unsigned int height)
 	:m_State(GAME_ACTIVE), m_Keys(), m_Width(width), m_Height(height), ShakeTime(0.0f),
@@ -110,8 +111,13 @@ void Game::Init()
 	this->Levels.push_back(four);
 	this->Level = 0;
 	// Configure game objects
+
+	//Set up Projectile Generator
+	PG = new ProjectileGenerator(ResourceManager::GetTexture("bullet"));
+
+	// Set up player
 	glm::vec2 playerPos = glm::vec2(this->m_Width / 2 - PLAYER_SIZE.x / 2, this->m_Height - PLAYER_SIZE.y);
-	Player = new PlayerObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"), 
+	Player = new PlayerObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"), PG,
 		ResourceManager::GetTexture("gun"), ResourceManager::GetTexture("bullet"), ResourceManager::GetShader("sprite"), ResourceManager::GetShader("sprite"));
 
 
@@ -122,9 +128,7 @@ void Game::Init()
 	SoundEngine->play2D("source/Breakout/Resources/Sounds/breakout.mp3", GL_TRUE);
 
 
-	
 
-	SD_TRACE(sizeof(Shader));
 }
 
 void Game::EventInput(SeetyDog::Event& event)
@@ -253,15 +257,12 @@ void Game::Update(float dt)
 	Player->Update(dt);
 
 
+
 	// Check for collisions
 	this->DoCollisions();
 	// Update particles
 	Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2));
-	for (auto bullet : Player->m_Bullets) {
-		if (bullet.m_IsHit) {
-			BulletParticles->Update(dt, bullet.m_HitLocation, 5);
-		}
-	}
+
 
 	// Update PowerUps
 	this->UpdatePowerUps(dt);
@@ -313,11 +314,11 @@ void Game::Render()
 				powerUp.Draw(*Renderer);
 		// Draw particles	
 		Particles->Draw();
-		for (auto bullet : Player->m_Bullets) {
-			if (bullet.m_IsHit) {
-				BulletParticles->Draw();
-			}
-		}
+	//	for (auto bullet : Player->m_Bullets) {
+	//		if (bullet.m_IsHit) {
+	//			BulletParticles->Draw();
+	//		}
+	//	}
 
 		// Draw ball
 		Ball->Draw(*Renderer);
@@ -499,9 +500,8 @@ void Game::DoCollisions()
 	{
 		if (!box.Destroyed)
 		{
-			for (auto& bullets : Player->m_Bullets) {
-				bullets.Collision(box);
-			}
+			Player->m_Bullets->Collision(box);
+			
 			//./Collision collisionBullet = CheckCollision(Player->m_Bullets[0], box);
 			Collision collision = CheckCollision(*Ball, box);
 			if (std::get<0>(collision)) // If collision is true
