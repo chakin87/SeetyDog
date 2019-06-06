@@ -17,8 +17,10 @@ void ProjectileGenerator::ShootProjectile(glm::vec2 firingPosition, float rotati
 	}
 }
 
+
 bool ProjectileGenerator::Collision(GameObject & object)
 {
+	//TODO: Improve bullet collision!	
 	for(auto& projy : this->m_Projectiles) {
 	
 		if (projy.m_LifeSpan > 0.0f) {
@@ -42,9 +44,9 @@ void ProjectileGenerator::Update(float dt)
 
 	for (unsigned int  i = 0; i < m_Amount; ++i) {
 		Projectile& pewpew = this->m_Projectiles[i];
-		pewpew.m_LifeSpan -= dt;
-		SD_TRACE(pewpew.m_LifeSpan);
 		if (pewpew.m_LifeSpan > 0.0f) {
+			SD_TRACE(pewpew.m_LifeSpan);
+			pewpew.m_LifeSpan -= dt;
 			//If the projectile is still alive, 
 			//then we move and add red to it to show it heating up.
 			pewpew.Position += pewpew.Velocity * dt;

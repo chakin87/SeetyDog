@@ -1,9 +1,13 @@
-﻿  ProjectileObject.cpp
-c:\cpp\seetydog\dogpark\source\breakout\projectileobject.cpp(51): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-c:\cpp\seetydog\dogpark\source\breakout\projectileobject.cpp(101): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-c:\cpp\seetydog\dogpark\source\breakout\projectileobject.cpp(112): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+﻿  Game.cpp
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(108): warning C4244: 'argument': conversion from 'double' to 'GLuint', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(109): warning C4244: 'argument': conversion from 'double' to 'GLuint', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(110): warning C4244: 'argument': conversion from 'double' to 'GLuint', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(111): warning C4244: 'argument': conversion from 'double' to 'GLuint', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(331): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(338): warning C4244: 'argument': conversion from 'unsigned int' to 'GLfloat', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(344): warning C4244: 'argument': conversion from 'unsigned int' to 'GLfloat', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(350): warning C4244: 'argument': conversion from 'float' to 'GLuint', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(352): warning C4244: 'argument': conversion from 'float' to 'GLuint', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(354): warning C4244: 'argument': conversion from 'float' to 'GLuint', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\game.cpp(356): warning C4244: 'argument': conversion from 'float' to 'GLuint', possible loss of data
   DogPark.vcxproj -> C:\CPP\SeetyDog\DogPark\..\bin\Debug-windows-x86_64\DogPark\DogPark.exe

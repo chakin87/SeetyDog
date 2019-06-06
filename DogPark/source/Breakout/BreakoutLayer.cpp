@@ -26,8 +26,7 @@ void BreakoutLayer::OnAttach()
 
 	////....////
 
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	
 
 
 	glViewport(0, 0, m_Width, m_Height);

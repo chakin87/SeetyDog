@@ -56,6 +56,10 @@ Game::~Game()
 
 void Game::Init()
 {
+	// Remove standard windows cursor from view
+	//auto* window = static_cast<GLFWwindow*>(SeetyDog::Application::Get().GetWindow().GetNativeWindow());
+	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN); //or  GLFW_CURSOR_DISABLED
+
 	// Load shaders
 
 	ResourceManager::LoadShader((std::string)"source/Breakout/Resources/Shaders/basic.shader", (std::string)"sprite");

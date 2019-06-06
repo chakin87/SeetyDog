@@ -95,7 +95,7 @@ void ParticleGenerator::init()
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
 	glBindVertexArray(0);
 
-	// Create this->amount default particle instances
+	// Create this->amount default particle instancesdd
 	for (GLuint i = 0; i < this->amount; ++i)
 		this->particles.push_back(Particle());
 }
