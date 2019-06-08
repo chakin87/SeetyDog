@@ -23,7 +23,7 @@ public://Methods
 	void		Update(float dt);
 	void		Draw(SpriteRenderer &renderer) override;
 
-public://Members
+public://Members 
 	ProjectileGenerator*		m_Bullets;
 private://Methods
 	void						UpdateGunPosition();
@@ -46,6 +46,5 @@ private://Members
 	const short					m_MAX_BULLETS = 30;
 	Shader						m_BulletShader;
 	glm::vec2					m_BulletVelocity;
-	unsigned short				m_BulletIndex;
 
 };

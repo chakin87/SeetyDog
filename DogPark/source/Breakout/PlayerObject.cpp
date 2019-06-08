@@ -16,7 +16,7 @@ PlayerObject::PlayerObject()
 
 PlayerObject::PlayerObject(glm::vec2 pos, glm::vec2 paddleSize, Texture2D paddleSprite, ProjectileGenerator* projGen,
 	Texture2D gunSprite, Texture2D bulletSprite, Shader paddleShader, Shader bulletShader)
-	: m_PaddleTex(paddleSprite), m_GunTex(gunSprite), m_BulletTex(bulletSprite),m_BulletIndex(0),
+	: m_PaddleTex(paddleSprite), m_GunTex(gunSprite), m_BulletTex(bulletSprite),
 	m_PlayerShader(paddleShader), m_BulletShader(bulletShader), m_PaddleInitSize(paddleSize), m_PaddleInitPosition(pos)//,
 	//m_BulletVelocity(-100.0f)
 {

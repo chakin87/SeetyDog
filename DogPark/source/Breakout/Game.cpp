@@ -127,7 +127,8 @@ void Game::Init()
 
 
 	glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
-	Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
+	Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"), PG,
+		ResourceManager::GetTexture("gun"), ResourceManager::GetTexture("bullet"), ResourceManager::GetShader("sprite"), ResourceManager::GetShader("sprite"));
 	// Audio
 	SoundEngine->play2D("source/Breakout/Resources/Sounds/breakout.mp3", GL_TRUE);
 
@@ -189,6 +190,7 @@ void Game::EventInput(SeetyDog::Event& event)
 		}
 	}
 	Player->OnEvent(event);
+	Ball->OnEvent(event);
 }
 
 void Game::ProcesInput(float dt)
@@ -253,13 +255,11 @@ void Game::Update(float dt)
 	// Update objects
 	Ball->Move(dt, this->m_Width);
 
-//.//.//Testing "A simple 2D transformation by rotation."//.//.//		v
+
 	Ball->Update(dt);
-//.//.//Testing "A simple 2D transformation by rotation."//.//.//		^
 
 
 	Player->Update(dt);
-
 
 
 	// Check for collisions
