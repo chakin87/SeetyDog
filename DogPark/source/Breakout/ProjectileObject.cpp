@@ -12,7 +12,7 @@ void ProjectileGenerator::ShootProjectile(glm::vec2 firingPosition, float rotati
 {
 	if (m_TotalAmmunition > 0) {
 		m_LastUsedProjectile = GetUnusedProjectile();
-		SD_TRACE(m_LastUsedProjectile);
+	//	SD_TRACE(m_LastUsedProjectile);
 		SpawnProjectile(this->m_Projectiles[m_LastUsedProjectile], firingPosition, rotation);
 	}
 }
@@ -30,7 +30,7 @@ bool ProjectileGenerator::Collision(GameObject & object)
 				((projy.Position.x >= object.Position.x)&&
 				(projy.Position.x <= object.Position.x + object.Size.x ))) {
 
-				SD_TRACE("Hit with the bullet!");
+				//SD_TRACE("Hit with the bullet!");
 				object.Destroyed = true;
 				projy.m_LifeSpan = 0.0f;
 			}
@@ -45,7 +45,7 @@ void ProjectileGenerator::Update(float dt)
 	for (unsigned int  i = 0; i < m_Amount; ++i) {
 		Projectile& pewpew = this->m_Projectiles[i];
 		if (pewpew.m_LifeSpan > 0.0f) {
-			SD_TRACE(pewpew.m_LifeSpan);
+			//SD_TRACE(pewpew.m_LifeSpan);
 			pewpew.m_LifeSpan -= dt;
 			//If the projectile is still alive, 
 			//then we move and add red to it to show it heating up.

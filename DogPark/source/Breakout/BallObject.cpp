@@ -5,6 +5,12 @@
 #include <SeetyDog/KeyCodes.h>
 #include <SeetyDog/MouseButtonCodes.h>
 
+//TODO: Fix this using engine implementation
+#include <GLAD/include/glad/glad.h>
+#include <GLFW/include/GLFW/glfw3.h>
+#include <SeetyDog/Application.h>
+
+
 BallObject::BallObject()
 	: GameObject(), Radius(12.5f), Stuck(true), Sticky(GL_FALSE), PassThrough(GL_FALSE) { }
 
@@ -53,7 +59,13 @@ void BallObject::OnEvent(SeetyDog::Event & event)
 {
 	if (SeetyDog::Input::IsMouseButtonPressed(SD_MOUSE_BUTTON_LEFT)) {
 		this->m_Bullets->ShootProjectile(glm::vec2(m_GunPosition.x + (m_GunSize.x * .5F), m_GunPosition.y - m_GunSize.y * 0.2f));
-
+		//TODO: Fix this using a future engine implementation
+	//	glm::vec2 MousePos;
+		double mx, my;
+		auto* window = static_cast<GLFWwindow*>(SeetyDog::Application::Get().GetWindow().GetNativeWindow());
+		glfwGetCursorPos(window, &mx, &my);
+		SD_TRACE(mx);
+		SD_TRACE(my);
 	}
 	this->UpdateGunPosition();
 }

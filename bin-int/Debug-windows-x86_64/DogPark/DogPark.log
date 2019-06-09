@@ -1,2 +1,9 @@
-﻿  BallObject.cpp
+﻿  ProjectileObject.cpp
+c:\cpp\seetydog\dogpark\source\breakout\projectileobject.cpp(53): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\cpp\seetydog\dogpark\source\breakout\projectileobject.cpp(103): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\cpp\seetydog\dogpark\source\breakout\projectileobject.cpp(114): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
   DogPark.vcxproj -> C:\CPP\SeetyDog\DogPark\..\bin\Debug-windows-x86_64\DogPark\DogPark.exe
