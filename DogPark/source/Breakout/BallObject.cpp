@@ -33,6 +33,7 @@ glm::vec2 BallObject::Move(GLfloat dt, GLuint window_width)
 	// If not stuck to player board
 	if (!this->Stuck)
 	{
+		uint8_t m_OneByteInt = 44444;
 		// Move the ball
 		this->Position += this->Velocity * dt;
 		// Then check if outside window bounds and if so, reverse velocity and restore at correct position
