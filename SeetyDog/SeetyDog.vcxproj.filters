@@ -1479,6 +1479,10 @@
     <ClInclude Include="source\sdpch.h">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="source\SeetyDog\Renderer\Shader.h" />
+    <ClInclude Include="source\SeetyDog\Renderer\Buffer.h" />
+    <ClInclude Include="source\SeetyDog\Renderer\Renderer.h" />
+    <ClInclude Include="source\Platform\OpenGL\OpenGLBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="externlibs\stb_image\stb_image.cpp">
@@ -1517,5 +1521,9 @@
     <ClCompile Include="source\sdpch.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="source\SeetyDog\Renderer\Shader.cpp" />
+    <ClCompile Include="source\SeetyDog\Renderer\Buffer.cpp" />
+    <ClCompile Include="source\SeetyDog\Renderer\Renderer.cpp" />
+    <ClCompile Include="source\Platform\OpenGL\OpenGLBuffer.cpp" />
   </ItemGroup>
 </Project>

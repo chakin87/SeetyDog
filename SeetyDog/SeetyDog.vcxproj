@@ -583,6 +583,7 @@
     <ClInclude Include="externlibs\irrKlang\plugins\ikpMP3\decoder\mpaudectab.h" />
     <ClInclude Include="externlibs\irrKlang\plugins\ikpMP3\decoder\mpegaudio.h" />
     <ClInclude Include="externlibs\stb_image\stb_image.h" />
+    <ClInclude Include="source\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLTriangleLayer.h" />
     <ClInclude Include="source\Platform\Windows\WindowsInput.h" />
@@ -602,12 +603,16 @@
     <ClInclude Include="source\SeetyDog\LayerStack.h" />
     <ClInclude Include="source\SeetyDog\Logger.h" />
     <ClInclude Include="source\SeetyDog\MouseButtonCodes.h" />
+    <ClInclude Include="source\SeetyDog\Renderer\Buffer.h" />
     <ClInclude Include="source\SeetyDog\Renderer\GraphicsContext.h" />
+    <ClInclude Include="source\SeetyDog\Renderer\Renderer.h" />
+    <ClInclude Include="source\SeetyDog\Renderer\Shader.h" />
     <ClInclude Include="source\SeetyDog\Window.h" />
     <ClInclude Include="source\sdpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="externlibs\stb_image\stb_image.cpp" />
+    <ClCompile Include="source\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLTriangleLayer.cpp" />
     <ClCompile Include="source\Platform\Windows\WindowsInput.cpp" />
@@ -621,6 +626,9 @@
     <ClCompile Include="source\sdpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="source\SeetyDog\Renderer\Buffer.cpp" />
+    <ClCompile Include="source\SeetyDog\Renderer\Renderer.cpp" />
+    <ClCompile Include="source\SeetyDog\Renderer\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="externlibs\GLFW\GLFW.vcxproj">

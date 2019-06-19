@@ -1,21 +1,4 @@
-﻿  sdpch.cpp
-  stb_image.cpp
-  OpenGLContext.cpp
-  OpenGLTriangleLayer.cpp
-c:\cpp\seetydog\seetydog\source\platform\opengl\opengltrianglelayer.cpp(41): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
-c:\cpp\seetydog\seetydog\source\platform\opengl\opengltrianglelayer.cpp(41): warning C4154: deletion of an array expression; conversion to pointer supplied
-c:\cpp\seetydog\seetydog\source\platform\opengl\opengltrianglelayer.cpp(138): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-c:\cpp\seetydog\seetydog\source\platform\opengl\opengltrianglelayer.cpp(150): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-  WindowsInput.cpp
-  WindowsWindow.cpp
-  Application.cpp
-  ImGuiBuild.cpp
-  ImGuiLayer.cpp
-c:\cpp\seetydog\seetydog\source\seetydog\imgui\imguilayer.cpp(80): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-  Layer.cpp
-  LayerStack.cpp
-  Logger.cpp
-  Generating Code...
+﻿  Buffer.cpp
 freetype.lib(freetype.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in irrKlang.lib(irrKlang.dll); second definition ignored
 freetype.lib(freetype.dll) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
 opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in irrKlang.lib(irrKlang.dll); second definition ignored
